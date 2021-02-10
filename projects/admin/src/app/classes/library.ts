@@ -52,6 +52,12 @@ export interface ExceptionDates {
   repeat?: Repeat;
 }
 
+export interface NotificationSettings {
+  type: string;
+  email: string;
+  delay?: number;
+}
+
 export class Library {
 
   // CLASS ATTRIBUTES ================================================
@@ -63,6 +69,7 @@ export class Library {
   code: string = null;
   opening_hours: Array<OpeningHours> = [];
   exception_dates?: Array<ExceptionDates>;
+  notification_settings?: Array<NotificationSettings>;
   organisation: Organisation;
 
   // GETTER & SETTER ================================================

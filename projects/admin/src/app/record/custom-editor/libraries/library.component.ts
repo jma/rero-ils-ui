@@ -16,7 +16,7 @@
  */
 
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -25,17 +25,23 @@ import { ToastrService } from 'ngx-toastr';
 import { UserService } from '@rero/shared';
 import { Library } from '../../../classes/library';
 import { LibraryFormService } from './library-form.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'admin-libraries-library',
   templateUrl: './library.component.html',
   styleUrls: ['./library.component.scss']
 })
-export class LibraryComponent implements OnInit {
+export class LibraryComponent implements OnInit, OnDestroy {
 
   public library: Library;
   public libForm: FormGroup;
-  public organisationPid;
+  public organisationPid: string;
+
+  /** List of internal notification types */
+  internalTypes = ['booking', 'request', 'transit_notice'];
+
+  private eventForm: Subscription;
 
   constructor(
     private recordService: RecordService,
@@ -55,20 +61,26 @@ export class LibraryComponent implements OnInit {
       if (loggedUser) {
         this.organisationPid = loggedUser.currentOrganisation;
       }
-      if (params && params.pid) {
-        this.recordService.getRecord('libraries', params.pid, 1).subscribe(record => {
-          this.library = new Library(record.metadata);
-          this.libraryForm.populate(record.metadata);
+      this.libraryForm.create();
+      this.eventForm = this.libraryForm.getBuildEvent().subscribe((buildEvent: any) => {
+        if (params && params.pid) {
+          this.recordService.getRecord('libraries', params.pid, 1).subscribe(record => {
+            this.library = new Library(record.metadata);
+            this.libraryForm.populate(record.metadata);
+            this.libForm = this.libraryForm.form;
+            this.setAsyncValidator();
+          });
+        } else {
+          this.library = new Library({});
           this.libForm = this.libraryForm.form;
           this.setAsyncValidator();
-        });
-      } else {
-        this.libraryForm.reset();
-        this.library = new Library({});
-        this.libForm = this.libraryForm.form;
-        this.setAsyncValidator();
-      }
+        }
+      });
     });
+  }
+
+  ngOnDestroy() {
+    this.eventForm.unsubscribe();
   }
 
   setAsyncValidator() {
@@ -87,6 +99,8 @@ export class LibraryComponent implements OnInit {
   get email() { return this.libraryForm.email; }
   get code() { return this.libraryForm.code; }
   get openingHours() { return this.libraryForm.opening_hours as FormArray; }
+  get notificationSettings() {
+    return this.libraryForm.notification_settings as FormArray; }
 
   onSubmit() {
     this._cleanFormValues(this.libraryForm.getValues());
@@ -112,7 +126,7 @@ export class LibraryComponent implements OnInit {
         this.router.navigate(['../detail', record.metadata.pid], {relativeTo: this.route, replaceUrl: true});
       });
     }
-    this.libraryForm.reset();
+    this.libraryForm.build();
   }
 
   /**
@@ -126,12 +140,13 @@ export class LibraryComponent implements OnInit {
         day.times = [];
       }
     });
+    formValues.notification_settings = formValues.notification_settings.filter(element => element.email !== '');
   }
 
   onCancel(event) {
     event.preventDefault();
     this.location.back();
-    this.libraryForm.reset();
+    this.libraryForm.build();
   }
   addTime(dayIndex): void {
     this.libraryForm.addTime(dayIndex);

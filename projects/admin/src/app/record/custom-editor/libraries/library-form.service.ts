@@ -17,10 +17,12 @@
 
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TimeValidator } from '@rero/ng-core';
+import { RecordService, TimeValidator } from '@rero/ng-core';
+import { Subject } from 'rxjs';
+import { Library, NotificationSettings } from '../../../classes/library';
 import { WeekDays } from '../../../classes/week-days';
 
-import { Library } from '../../../classes/library';
+
 
 @Injectable({
    providedIn: 'root'
@@ -29,14 +31,22 @@ export class LibraryFormService {
 
   public form;
 
-  constructor(
-    private fb: FormBuilder
-    ) {
-      this.build();
-  }
 
+  private notificationTypes = [];
+
+  /** Observable for build event */
+  private buildEvent = new Subject();
+
+  constructor(
+    private _fb: FormBuilder,
+    private _recordService: RecordService
+    ) { }
+
+  /**
+   * Build form
+   */
   build() {
-    this.form = this.fb.group({
+    this.form = this._fb.group({
       name: ['', [
         Validators.required,
         Validators.minLength(4)
@@ -48,11 +58,34 @@ export class LibraryFormService {
           Validators.required
         ]
       }],
-      opening_hours: this.fb.array([])
+      opening_hours: this._fb.array([]),
+      notification_settings: this._fb.array([])
     });
     this.initializeOpeningHours();
+    this.initializeNotificationSettings();
   }
 
+  /**
+   * Get build event
+   */
+  getBuildEvent() {
+    return this.buildEvent.asObservable();
+  }
+
+  create() {
+    this._recordService
+      .getSchemaForm('notifications')
+      .subscribe((jsonSchema: any) => {
+        this.notificationTypes = jsonSchema.schema.properties.notification_type.enum;
+        this.build();
+        this.buildEvent.next(true);
+      });
+  }
+
+  /**
+   * Build and set default values for opening hours at form initialization
+   * @param openingHours - opening hours
+   */
   initializeOpeningHours(openingHours = []) {
     const days = Object.keys(WeekDays);
     const hours = this.form.get('opening_hours');
@@ -60,12 +93,16 @@ export class LibraryFormService {
       hours.push(this.buildOpeningHours(
         false,
         days[step],
-        this.fb.array([])
+        this._fb.array([])
       ));
     }
     this.setOpeningHours(openingHours);
   }
 
+  /**
+   * Set opening hours from record data
+   * @param openingHours - opening hours
+   */
   setOpeningHours(openingHours = []) {
     for (let step = 0; step < 7; step++) {
       const atimes = this.getTimesByDayIndex(step);
@@ -85,8 +122,14 @@ export class LibraryFormService {
     }
   }
 
+  /**
+   * Create opening hour form control
+   * @param isOpen - is open
+   * @param day - day
+   * @param times - times array
+   */
   buildOpeningHours(isOpen, day, times): FormGroup {
-    return this.fb.group({
+    return this._fb.group({
       is_open: [isOpen],
       day: [day],
       times
@@ -95,9 +138,14 @@ export class LibraryFormService {
     });
   }
 
+  /**
+   * Create times form control
+   * @param startTime - start time
+   * @param endTime - end time
+   */
   buildTimes(startTime = '00:01', endTime = '23:59'): FormGroup {
     const regex = '^(?!(0:00)|(00:00)$)([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$';
-    return this.fb.group({
+    return this._fb.group({
       start_time: [startTime, {
         validators: [
           Validators.required,
@@ -115,10 +163,10 @@ export class LibraryFormService {
     });
   }
 
-  reset() {
-    this.build();
-  }
-
+  /**
+   * Populate the form
+   * @param library - library
+   */
   populate(library: Library) {
     this.form.patchValue({
       name: library.name,
@@ -127,6 +175,56 @@ export class LibraryFormService {
       code: library.code,
     });
     this.setOpeningHours(library.opening_hours);
+    this.setNotificationSettings(library.notification_settings);
+  }
+
+  /**
+   * Build an set default values for notification settings
+   * @param notificationSettings  - notification settings
+   */
+  initializeNotificationSettings(notificationSettings = []) {
+    const settings = this.form.get('notification_settings');
+    this.notificationTypes.forEach(type => {
+      settings.push(this.getSettingsByType(type));
+    });
+    this.setNotificationSettings(notificationSettings);
+  }
+
+  /**
+   * Get setting by type
+   * @param settingType - setting type
+   */
+  getSettingsByType(settingType: string) {
+    const model: NotificationSettings = {
+      type: settingType,
+      email: ''
+    };
+    switch (settingType) {
+      case('availability'):
+        model.delay = 0;
+        break;
+    }
+    return this._fb.group(model);
+  }
+
+  /**
+   * Set values from record
+   * @param notificationSettings - notification settings
+   */
+  setNotificationSettings(notificationSettings = []) {
+    if (notificationSettings.length > 0) {
+      const formSettings = this.form.get('notification_settings');
+      for (let step = 0; step < formSettings.value.length; step++) {
+        const formSetting = formSettings.get(String(step));
+        const currentSetting = notificationSettings.find(element => element.type === formSetting.get('type').value);
+        if (currentSetting !== undefined) {
+          formSetting.get('email').setValue(currentSetting.email);
+          if (currentSetting.delay !== undefined) {
+            formSetting.get('delay').setValue(currentSetting.delay);
+          }
+        }
+      }
+    }
   }
 
   setId(id) { this.form.value.id = id; }
@@ -139,6 +237,9 @@ export class LibraryFormService {
   get code() { return this.form.get('code'); }
   get opening_hours() {
     return this.form.get('opening_hours') as FormArray;
+  }
+  get notification_settings() {
+    return this.form.get('notification_settings') as FormArray;
   }
 
   getValues() { return this.form.value; }
