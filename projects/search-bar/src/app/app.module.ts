@@ -37,36 +37,33 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
 
 
 @NgModule({
-  declarations: [
-    SearchBarComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    RouterModule.forRoot([]),
-    HttpClientModule,
-    FormsModule,
-    RecordModule,
-    ReactiveFormsModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: BaseTranslateLoader,
-        useClass: TranslateLoader,
-        deps: [CoreConfigService, HttpClient]
-      },
-      isolate: false
-    }),
-    TypeaheadModule.forRoot(),
-    SharedModule
-  ],
-  providers: [
-    // TODO: remove this to avoid api call. It still neded because
-    //       `_getContributionName` need API config.
-    { provide: APP_INITIALIZER, useFactory: appInitFactory, deps: [AppInitializerService], multi: true }
-  ],
-  entryComponents: [
-    SearchBarComponent
-  ]
+    declarations: [
+        SearchBarComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        RouterModule.forRoot([]),
+        HttpClientModule,
+        FormsModule,
+        RecordModule,
+        ReactiveFormsModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: BaseTranslateLoader,
+                useClass: TranslateLoader,
+                deps: [CoreConfigService, HttpClient]
+            },
+            isolate: false
+        }),
+        TypeaheadModule.forRoot(),
+        SharedModule
+    ],
+    providers: [
+        // TODO: remove this to avoid api call. It still neded because
+        //       `_getContributionName` need API config.
+        { provide: APP_INITIALIZER, useFactory: appInitFactory, deps: [AppInitializerService], multi: true }
+    ]
 })
 export class AppModule {
 

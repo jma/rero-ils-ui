@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -70,12 +73,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "admin:build",
-            "sourceMap": {
-              "scripts": true,
-              "styles": false,
-              "vendor": true
-            }
+            "browserTarget": "admin:build"
           },
           "configurations": {
             "production": {
@@ -101,19 +99,6 @@
               "projects/admin/src/app/scss/styles.scss"
             ],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/admin/tsconfig.app.json",
-              "projects/admin/tsconfig.spec.json",
-              "projects/admin/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "e2e": {
@@ -195,19 +180,6 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "public-holdings-items:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/public-holdings-items/tsconfig.app.json",
-              "projects/public-holdings-items/tsconfig.spec.json",
-              "projects/public-holdings-items/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "e2e": {
@@ -319,19 +291,6 @@
             "scripts": []
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/public-search/tsconfig.app.json",
-              "projects/public-search/tsconfig.spec.json",
-              "projects/public-search/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
@@ -413,19 +372,6 @@
             "browserTarget": "search-bar:build"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/search-bar/tsconfig.app.json",
-              "projects/search-bar/tsconfig.spec.json",
-              "projects/search-bar/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
@@ -464,18 +410,6 @@
             "main": "projects/shared/src/test.ts",
             "tsConfig": "projects/shared/tsconfig.spec.json",
             "karmaConfig": "projects/shared/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/shared/tsconfig.lib.json",
-              "projects/shared/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
@@ -560,19 +494,6 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "public-patron-profile:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/public-patron-profile/tsconfig.app.json",
-              "projects/public-patron-profile/tsconfig.spec.json",
-              "projects/public-patron-profile/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "e2e": {

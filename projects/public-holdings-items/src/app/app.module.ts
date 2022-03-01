@@ -84,11 +84,6 @@ export function appInitFactory(appInitializerService: AppInitializerService) {
         { provide: APP_INITIALIZER, useFactory: appInitFactory, deps: [AppInitializerService], multi: true },
         { provide: CoreConfigService, useClass: AppConfigService }
     ],
-    entryComponents: [
-        HoldingsComponent,
-        ItemComponent,
-        ItemsComponent
-    ],
     exports: [
         NotesFilterPipe
     ],
