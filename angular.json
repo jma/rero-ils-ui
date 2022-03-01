@@ -22,14 +22,19 @@
             "main": "projects/admin/src/main.ts",
             "polyfills": "projects/admin/src/polyfills.ts",
             "tsConfig": "projects/admin/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/admin/src/assets"
             ],
             "styles": [
               "projects/admin/src/app/scss/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -59,7 +64,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -238,13 +244,18 @@
             "main": "projects/public-search/src/main.ts",
             "polyfills": "projects/public-search/src/polyfills.ts",
             "tsConfig": "projects/public-search/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/public-search/src/favicon.ico",
               "projects/public-search/src/assets"
             ],
             "styles": [],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -274,7 +285,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -488,12 +500,17 @@
             "main": "projects/public-patron-profile/src/main.ts",
             "polyfills": "projects/public-patron-profile/src/polyfills.ts",
             "tsConfig": "projects/public-patron-profile/tsconfig.app.json",
-            "aot": true,
             "assets": [],
             "styles": [
               "projects/public-search/src/app/scss/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -524,7 +541,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
