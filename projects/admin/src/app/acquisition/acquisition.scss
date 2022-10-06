@@ -18,7 +18,7 @@
 
 @import '~bootstrap/scss/_functions';
 @import '~bootstrap/scss/_variables';
-@import '/projects/admin/src/app/scss/variables';
+@import '../scss/variables';
 
 .account {
 
@@ -52,7 +52,7 @@
 //   Some DOM element has gutter to to bootstrap grid system. Using the
 //   following classes we can remove this gutters.
 // ============================================================================
-$gutter:  $grid-gutter-width / 2;
+$gutter:  calc($grid-gutter-width / 2);
 .no-gutter {
   margin-right: -$gutter;
   margin-left: -$gutter;

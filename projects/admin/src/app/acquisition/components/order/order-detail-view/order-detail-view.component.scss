@@ -18,9 +18,9 @@
 
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
-@import '/projects/admin/src/app/scss/variables';
+@import '~projects/admin/src/app/scss/variables';
 
-$gutter:  $grid-gutter-width / 2;
+$gutter:  calc($grid-gutter-width / 2);
 
 .btn-additional-action {
   z-index: 2;
