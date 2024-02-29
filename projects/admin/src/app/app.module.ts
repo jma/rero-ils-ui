@@ -34,7 +34,7 @@ import {
   CoreConfigService,
   RecordHandleErrorService as CoreRecordHandleErrorService,
   LocalStorageService,
-  RecordModule, RemoteTypeaheadService,
+  RecordModule, RemoteTypeaheadService, FilesService,
   TranslateLoader, TranslateService, TruncateTextPipe
 } from '@rero/ng-core';
 import { ItemHoldingsCallNumberPipe, MainTitlePipe, SharedModule, UserService } from '@rero/shared';
@@ -210,6 +210,7 @@ import { PreviewEmailModule } from './shared/preview-email/preview-email.module'
 import { CurrentLibraryPermissionValidator } from './utils/permissions';
 import { CustomShortcutHelpComponent } from './widgets/custom-shortcut-help/custom-shortcut-help.component';
 import { FrontpageComponent } from './widgets/frontpage/frontpage.component';
+import { ResourcesFilesService } from './service/resources-files.service';
 
 /** Init application factory */
 export function appInitFactory(appInitializerService: AppInitializerService): () => Promise<any> {
@@ -469,7 +470,8 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
     ItemHoldingsCallNumberPipe,
     CountryCodeTranslatePipe,
     { provide: CoreBucketNameService, useClass: BucketNameService },
-    { provide: CoreRecordHandleErrorService, useClass: RecordHandleErrorService }
+    { provide: CoreRecordHandleErrorService, useClass: RecordHandleErrorService },
+    { provide: FilesService, useClass: ResourcesFilesService },
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

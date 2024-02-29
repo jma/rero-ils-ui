@@ -246,6 +246,7 @@ export class RouteToolService {
    *      - canDelete permission
    */
   permissions( record: any, recordType: string, membership = false): Observable<any> {
+    console.log(record, recordType);
     return new Observable((observer: Subscriber<any>): void => {
       const permissionService = this.recordPermissionService;
       permissionService
