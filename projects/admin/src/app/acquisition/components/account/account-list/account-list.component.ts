@@ -19,22 +19,20 @@ import { HttpParams } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { AcqAccountApiService } from '@app/admin/acquisition/api/acq-account-api.service';
 import { IAcqAccount } from '@app/admin/acquisition/classes/account';
-import { CONFIG } from '@rero/ng-core';
 import { exportFormats } from '@app/admin/acquisition/routes/accounts-route';
 import { OrganisationService } from '@app/admin/service/organisation.service';
 import { RecordPermissionService } from '@app/admin/service/record-permission.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ApiService, RecordService } from '@rero/ng-core';
+import { ApiService, CONFIG, RecordService } from '@rero/ng-core';
 import { IPermissions, PERMISSIONS, UserService } from '@rero/shared';
-import { MessageService } from 'primeng/api';
-import { forkJoin, map, switchMap, tap } from 'rxjs';
+import { MessageService, TreeNode, TreeTableNode } from 'primeng/api';
+import { forkJoin, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'admin-account-list',
-  templateUrl: './account-list.component.html'
+  templateUrl: './account-list.component.html',
 })
 export class AccountListComponent implements OnInit {
-
   private userService: UserService = inject(UserService);
   private acqAccountApiService: AcqAccountApiService = inject(AcqAccountApiService);
   private organisationService: OrganisationService = inject(OrganisationService);
@@ -45,14 +43,14 @@ export class AccountListComponent implements OnInit {
 
   // COMPONENT ATTRIBUTES =======================================================
   /** Root account to display */
-  rootAccounts: any[] = [];
+  rootAccounts: TreeTableNode[] = [];
 
   /** Export options configuration. */
   exportOptions: {
-    label: string,
-    url: string,
-    disabled?: boolean,
-    disabled_message?: string
+    label: string;
+    url: string;
+    disabled?: boolean;
+    disabled_message?: string;
   }[];
 
   /** All user permissions */
@@ -60,7 +58,6 @@ export class AccountListComponent implements OnInit {
 
   /** Store library pid */
   private _libraryPid: string;
-
 
   // GETTER & SETTER ============================================================
   /** Get the current organisation */
@@ -70,59 +67,77 @@ export class AccountListComponent implements OnInit {
 
   /** Get a message containing the reasons why record list cannot be exported */
   get exportInfoMessage(): string {
-    return (this.rootAccounts.length === 0)
+    return this.rootAccounts.length === 0
       ? this.translateService.instant('Result list is empty.')
-      : this.translateService.instant('Too many items. Should be less than {{max}}.',
-        { max: RecordService.MAX_REST_RESULTS_SIZE }
-      );
+      : this.translateService.instant('Too many items. Should be less than {{max}}.', {
+          max: RecordService.MAX_REST_RESULTS_SIZE,
+        });
   }
-
+  orderAccountsAsTree(accounts) {
+    var tmp = {};
+    accounts = this.processAccount(accounts);
+    accounts.map((val) => {
+      const key = val?.data?.parent?.pid ? val.data.parent.pid : -1;
+      if (!tmp[key]) {
+        tmp[key] = [];
+      }
+      tmp[key].push(val);
+    });
+    const localAccounts = tmp[-1].sort((a, b) => a.label.localeCompare(b.label));
+    this.attachChildren(localAccounts, tmp);
+    return localAccounts;
+  }
+  attachChildren(accounts, tmp) {
+    accounts.map((val) => {
+      if (tmp[val.data.pid]) {
+        val.children = tmp[val.data.pid].sort((a, b) => a.label.localeCompare(b.label));
+        this.attachChildren(val.children, tmp);
+      }
+    });
+  }
   /** OnInit hook */
   ngOnInit(): void {
     this._libraryPid = this.userService.user.currentLibrary;
-    let localAccounts = [];
-    this.acqAccountApiService.getAccounts(this._libraryPid, null).pipe(
-      map(accounts => this.processAccount(accounts)),
-      tap(accounts => localAccounts = accounts),
-      switchMap(accounts => {
-        const obs = accounts.map(account => this.recordPermissionService
-          .getPermission('acq_accounts', account.data.pid))
-        return forkJoin(obs);
-      }),
-      map((permissions: any) => {
-        permissions.forEach((permission, i) => {
-          localAccounts[i].data.permissions = permission;
-        });
-      })
-    ).subscribe(
-      () => {
-        this.rootAccounts = localAccounts;
-        this.exportOptions = this._exportFormats();
-      });
+    var localAccounts;
+    this.acqAccountApiService
+      .getAccounts(this._libraryPid, undefined, { sort: 'depth' })
+      .pipe(
+        tap((accounts: IAcqAccount[]) => (localAccounts = accounts)),
+        switchMap((accounts: any[]) => {
+          const obs = accounts.map((account) =>
+            this.recordPermissionService
+              .getPermission('acq_accounts', account.pid)
+              .pipe(tap((permission) => (account.permissions = permission)))
+          );
+          return forkJoin(obs);
+        }),
+        tap(() => (this.rootAccounts = this.orderAccountsAsTree(localAccounts))),
+        tap(() => (this.exportOptions = this._exportFormats()))
+      )
+      .subscribe(() => console.log(this.rootAccounts));
   }
 
   processAccount(accounts) {
-    return accounts.map(account => {
+    return accounts.map((account) => {
       return {
         data: account,
         label: account.name,
-        leaf: !(account?.number_of_children > 0)
+        leaf: !(account?.number_of_children > 0),
       };
     });
   }
   // COMPONENT FUNCTIONS ========================================================
   /** Operations to do when an account is deleted */
   accountDelete(node): void {
-    console.log(node);
     this.acqAccountApiService
       .delete(node.node.data.pid)
       .pipe(
         tap(() => {
           if (node.parent) {
-            node.parent.children = node.parent.children.filter(account => account.data.pid !== node.node.data.pid);
+            node.parent.children = node.parent.children.filter((account) => account.data.pid !== node.node.data.pid);
             node.parent.leaf = !(node.parent.children.length > 0);
           } else {
-            this.rootAccounts = this.rootAccounts.filter(account => account.data.pid !== node.node.data.pid);
+            this.rootAccounts = this.rootAccounts.filter((account) => account.data.pid !== node.node.data.pid);
           }
           this.rootAccounts = [...this.rootAccounts];
         })
@@ -132,7 +147,7 @@ export class AccountListComponent implements OnInit {
           severity: 'success',
           summary: this.translateService.instant('Account'),
           detail: this.translateService.instant('Account deleted'),
-          life: CONFIG.MESSAGE_LIFE
+          life: CONFIG.MESSAGE_LIFE,
         });
       });
   }
@@ -141,28 +156,26 @@ export class AccountListComponent implements OnInit {
     return this.recordPermissionService.generateDeleteMessage(permissions.delete.reasons);
   }
 
-  onNodeExpand(event: any) {
-    if (!event.node.children) {
-      let localAccounts = [];
-      this.acqAccountApiService.getAccounts(this._libraryPid, event.node.data.pid).pipe(
-        map(accounts => this.processAccount(accounts)),
-        tap(accounts => localAccounts = accounts),
-        switchMap(accounts => {
-          const obs = accounts.map(account => this.recordPermissionService
-            .getPermission('acq_accounts', account.data.pid))
-          return forkJoin(obs);
-        }),
-        map((permissions: any) => {
-          permissions.forEach((permission, i) => {
-            localAccounts[i].data.permissions = permission;
-          });
-        })
-      ).subscribe(
-        () => {
-          event.node.children = localAccounts;
-          this.rootAccounts = [...this.rootAccounts];
-        }
-      );
+  expandAll() {
+    this.rootAccounts.forEach((node) => {
+      this.expandRecursive(node, true);
+    });
+    this.rootAccounts = [...this.rootAccounts];
+  }
+
+  collapseAll() {
+    this.rootAccounts.forEach((node) => {
+      this.expandRecursive(node, false);
+    });
+    this.rootAccounts = [...this.rootAccounts];
+  }
+
+  private expandRecursive(node: TreeNode, isExpand: boolean) {
+    node.expanded = isExpand;
+    if (node.children) {
+      node.children.forEach((childNode) => {
+        this.expandRecursive(childNode, isExpand);
+      });
     }
   }
 
@@ -171,16 +184,14 @@ export class AccountListComponent implements OnInit {
    * @return Array of export format to generate an `export as` button or an empty array.
    */
   private _exportFormats(): Array<any> {
-    return exportFormats.map(
-      (format) => {
-        return {
-          label: format.label,
-          url: this.getExportFormatUrl(format),
-          disabled: !this.canExport(format),
-          disabled_message: this.exportInfoMessage
-        };
-      }
-    );
+    return exportFormats.map((format) => {
+      return {
+        label: format.label,
+        url: this.getExportFormatUrl(format),
+        disabled: !this.canExport(format),
+        disabled_message: this.exportInfoMessage,
+      };
+    });
   }
 
   /**
@@ -189,15 +200,10 @@ export class AccountListComponent implements OnInit {
    * @return formatted url for an export format.
    */
   getExportFormatUrl(format: any) {
-    const defaultQueryParams = [
-      'is_active:true',
-      `library.pid:${this._libraryPid}`
-    ];
+    const defaultQueryParams = ['is_active:true', `library.pid:${this._libraryPid}`];
     const query = defaultQueryParams.join(' AND ');
     const baseUrl = format.endpoint || this.apiService.getExportEndpointByType('acq_accounts');
-    const params = new HttpParams()
-      .set('q', query)
-      .set('format', format.format);
+    const params = new HttpParams().set('q', query).set('format', format.format);
     if (!format.disableMaxRestResultsSize) {
       params.append('size', String(RecordService.MAX_REST_RESULTS_SIZE));
     }
@@ -211,7 +217,7 @@ export class AccountListComponent implements OnInit {
    */
   canExport(format: any): boolean {
     const totalResults = this.rootAccounts.length;
-    return (format.hasOwnProperty('disableMaxRestResultsSize') && format.disableMaxRestResultsSize)
+    return format.hasOwnProperty('disableMaxRestResultsSize') && format.disableMaxRestResultsSize
       ? totalResults > 0
       : totalResults > 0 && totalResults < RecordService.MAX_REST_RESULTS_SIZE;
   }
