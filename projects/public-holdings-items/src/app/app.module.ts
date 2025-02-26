@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, inject, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -49,50 +49,44 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
   return () => appInitializerService.load();
 }
 
-@NgModule({
-  declarations: [
-    HoldingComponent,
-    HoldingsComponent,
-    ItemComponent,
-    ItemsComponent,
-    PickupLocationComponent,
-    RequestComponent,
-    DocumentDetailViewComponent,
-    ElectronicHoldingsComponent,
-  ],
-  imports: [
-    AccordionModule,
-    MenubarModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    DividerModule,
-    RouterModule.forRoot([]),
-    HttpClientModule,
-    FormsModule,
-    FormlyModule.forRoot(),
-    FormlyPrimeNGModule,
-    CoreModule,
-    RecordModule,
-    ReactiveFormsModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: BaseTranslateLoader,
-        useClass: TranslateLoader,
-        deps: [CoreConfigService, HttpClient],
-      },
-      isolate: false,
-    }),
-    SharedModule,
-    LoadingBarHttpClientModule,
-    LoadingBarModule,
-  ],
-  providers: [
-    { provide: TranslateService, useClass: NgCoreTranslateService },
-    { provide: APP_INITIALIZER, useFactory: appInitFactory, deps: [AppInitializerService], multi: true },
-    { provide: CoreConfigService, useClass: AppConfigService },
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-})
+@NgModule({ declarations: [
+        HoldingComponent,
+        HoldingsComponent,
+        ItemComponent,
+        ItemsComponent,
+        PickupLocationComponent,
+        RequestComponent,
+        DocumentDetailViewComponent,
+        ElectronicHoldingsComponent,
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA], imports: [AccordionModule,
+        MenubarModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        DividerModule,
+        RouterModule.forRoot([]),
+        FormsModule,
+        FormlyModule.forRoot(),
+        FormlyPrimeNGModule,
+        CoreModule,
+        RecordModule,
+        ReactiveFormsModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: BaseTranslateLoader,
+                useClass: TranslateLoader,
+                deps: [CoreConfigService, HttpClient],
+            },
+            isolate: false,
+        }),
+        SharedModule,
+        LoadingBarHttpClientModule,
+        LoadingBarModule], providers: [
+        { provide: TranslateService, useClass: NgCoreTranslateService },
+        { provide: APP_INITIALIZER, useFactory: appInitFactory, deps: [AppInitializerService], multi: true },
+        { provide: CoreConfigService, useClass: AppConfigService },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule implements DoBootstrap {
   private injector: Injector = inject(Injector);
 

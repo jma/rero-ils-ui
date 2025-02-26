@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { APP_INITIALIZER, DoBootstrap, inject, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -33,13 +33,9 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
   return () => appInitializerService.load();
 }
 
-@NgModule({
-    declarations: [],
-    imports: [
-        BrowserModule,
+@NgModule({ declarations: [], imports: [BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot([]),
-        HttpClientModule,
         ReactiveFormsModule,
         TranslateModule.forRoot({
             loader: {
@@ -49,14 +45,12 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
             },
             isolate: false
         }),
-        SharedModule
-    ],
-    providers: [
+        SharedModule], providers: [
         // TODO: remove this to avoid api call. It still needed because
         //       `_getContributionName` need API config.
-        { provide: APP_INITIALIZER, useFactory: appInitFactory, deps: [AppInitializerService], multi: true }
-    ]
-})
+        { provide: APP_INITIALIZER, useFactory: appInitFactory, deps: [AppInitializerService], multi: true },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule implements DoBootstrap {
 
   private injector: Injector = inject(Injector);
