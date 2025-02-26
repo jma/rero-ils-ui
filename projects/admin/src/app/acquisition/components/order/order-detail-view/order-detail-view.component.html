@@ -29,11 +29,11 @@
   }
 
   <!-- Place order button -->
-  <div class="flex gap-2 justify-content-between flex-wrap">
+  <div class="flex gap-2 justify-between flex-wrap">
     <h1>{{ order.reference }}</h1>
     @if (order?.is_current_budget && order?.pid) {
       @if (recordPermissions && recordPermissions.update.can && order.status === acqOrderStatus.PENDING) {
-        <section class="flex justify-content-end">
+        <section class="flex justify-end">
           <p-button
             (onClick)="placeOrderDialog()"
             severity="primary"
@@ -65,7 +65,7 @@
     <p-tabPanel #orderPanel [header]="'Order' | translate">
       <!--- TODO: change this for the next primeng version (19)-->
       @if(orderPanel.selected) {
-        <div class="flex flex-column gap-2">
+        <div class="flex flex-col gap-2">
           <!-- ORDER LINES -->
           <admin-order-lines
             [order]="order"
@@ -74,7 +74,7 @@
           @if(order.notes && order.notes.length > 0) {
             <p-panel>
               <ng-template pTemplate="header">
-                <div class="flex gap-2 align-items-center">
+                <div class="flex gap-2 items-center">
                   <shared-open-close-button (status)="notesCollapsed = $event" />
                   <h5 class="m-0">
                     {{

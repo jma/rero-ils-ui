@@ -70,7 +70,7 @@ import { Observable, Subscription } from 'rxjs';
             <div class="flex">
               <div class="flex" [innerHTML]="data.label"></div>
               @if (data.link) {
-                <a class="ml-2 text-700" (click)="$event.stopPropagation()" [href]="data.link" target="_blank">
+                <a class="ml-2 text-surface-700 dark:text-surface-100" (click)="$event.stopPropagation()" [href]="data.link" target="_blank">
                   <i class="fa fa-external-link"></i>
                 </a>
               }

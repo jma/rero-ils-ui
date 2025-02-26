@@ -43,7 +43,7 @@ export class ThumbnailComponent implements OnInit {
   @Input() record: any;
 
   /** Style for image container */
-  @Input() styleClass = 'w-6rem';
+  @Input() styleClass = 'w-24';
 
   /**
    * Get cover url

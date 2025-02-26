@@ -27,7 +27,7 @@
   }
   <h1>{{ account.name }}</h1>
   <!-- Account general information's -->
-   <div class="flex flex-column gap-2">
+   <div class="flex flex-col gap-2">
   <p-panel [header]="'Details'|translate">
     <dl class="metadata">
       <dt translate>Account number</dt>
@@ -91,7 +91,7 @@
             {{ account.expenditure_amount.children | negativeAmount | currency: organisation.default_currency }}
           </td>
         </tr>
-        <tr class="surface-100">
+        <tr class="bg-surface-100 dark:bg-surface-700">
           <td colspan="2" class="font-bold" translate>Balance</td>
           <td colspan="2" class="text-right" [ngClass]="{
               'text-success': account.remaining_balance.self > 0,

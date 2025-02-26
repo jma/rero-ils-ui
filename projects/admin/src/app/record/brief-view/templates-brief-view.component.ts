@@ -23,7 +23,7 @@ import { Component, Input } from '@angular/core';
     <a [routerLink]="[detailUrl.link]">{{ record.metadata.name }} </a>
     @if (record.metadata.visibility === 'private') {
       <small>
-        <i class="fa fa-lock text-color-secondary" aria-hidden="true"></i>
+        <i class="fa fa-lock text-muted-color" aria-hidden="true"></i>
       </small>
     }
   </h5>

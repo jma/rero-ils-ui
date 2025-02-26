@@ -21,11 +21,11 @@ import { FieldArrayType } from '@ngx-formly/core';
     selector: 'admin-repeat-section',
     template: `
     @for (field of field.fieldGroup; track field; let i = $index) {
-      <div class="grid">
-        <div class="col-11">
+      <div class="grid grid-cols-12 gap-4">
+        <div class="col-span-11">
           <formly-field [field]="field"></formly-field>
         </div>
-        <div class="col-1 flex gap-1">
+        <div class="col-span-1 flex gap-1">
           @if (field.parent.fieldGroup.length > props.minItems) {
             <p-button
               (onClick)="remove(i)"

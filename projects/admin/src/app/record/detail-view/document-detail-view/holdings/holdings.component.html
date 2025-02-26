@@ -15,7 +15,7 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 @if (canAdd) {
-  <div class="flex justify-content-end" [permissions]="[permissions.HOLD_CREATE, permissions.ITEM_CREATE]">
+  <div class="flex justify-end" [permissions]="[permissions.HOLD_CREATE, permissions.ITEM_CREATE]">
     <p-menu #menu [model]="options" [popup]="true" />
     <p-button icon="fa fa-caret-down" iconPos="right" outlined (onClick)="menu.toggle($event)" [label]="'Add'|translate"/>
   </div>
@@ -26,7 +26,7 @@
   <p-accordion multiple="true" [activeIndex]="isCurrentOrganisation? [0]: []">
   @for (holding of holdings; track holding; let i = $index) {
     <div
-      class="my-2 border-1 surface-border border-round"
+      class="my-2 border border-surface rounded-border"
       admin-document-holding
       [holding]="holding"
       [selected]="isCurrentOrganisation? i === 0: false"

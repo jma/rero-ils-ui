@@ -22,8 +22,8 @@ import { Component } from '@angular/core';
     <router-outlet></router-outlet>
     <p-toast>
       <ng-template let-message pTemplate="message">
-        <div class="flex flex-column align-items-start flex-grow-1">
-          <div class="font-medium text-lg text-900">
+        <div class="flex flex-col items-start grow">
+          <div class="font-medium text-lg text-surface-900 dark:text-surface-0">
             {{ message.summary }}
           </div>
           <p [innerHtml]="message.detail"></p>

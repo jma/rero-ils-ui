@@ -168,7 +168,7 @@
           @if (record.metadata.issue.status === issueItemStatus.RECEIVED) {
             {{ record.metadata.issue.received_date | dateTranslate }}
           } @else {
-            <span class="text-color-secondary font-italic" translate>Not yet received</span>
+            <span class="text-muted-color italic" translate>Not yet received</span>
           }
         </dd>
         <!-- issue status -->
@@ -212,14 +212,14 @@
           <i class="fa fa-exchange"></i>&nbsp;
           {{ 'Circulation' | translate }}
         </ng-template>
-        <div class="flex flex-column gap-2">
-        <div class="flex justify-content-end">
+        <div class="flex flex-col gap-2">
+        <div class="flex justify-end">
           <admin-circulation-logs-dialog [resourcePid]="record.metadata.pid" [resourceType]="'item'" />
         </div>
         <admin-item-transactions [itemPid]="record.metadata.pid" (requestEvent)="updateItemStatus()" />
         <admin-item-fees [itemPid]="record.metadata.pid" [permissions]="permissions.PTTR_ACCESS" />
         @if (record.metadata | keyExists:'legacy_checkout_count') {
-          <section class="border-1 border-round surface-border px-2">
+          <section class="border rounded-border border-surface px-2">
             <dl class="metadata">
                 <dt translate>
                   Legacy checkout count

@@ -45,9 +45,9 @@
   severity="warn"
 >
   <ng-template pTemplate>
-    <div class="flex gap-2 align-items-start">
+    <div class="flex gap-2 items-start">
       <i class="fa fa-exclamation-circle text-2xl"></i>
-      <div class="flex flex-column gap-2">
+      <div class="flex flex-col gap-2">
         <div class="font-bold" translate>
           Too many identifiers: not all identifiers have been verified.
         </div>
@@ -63,7 +63,7 @@
 <div class="font-bold" translate>
   Do you really want to import this document?
 </div>
-<div class="flex gap-1 justify-content-end mt-2">
+<div class="flex gap-1 justify-end mt-2">
   <p-button
     [label]="'Cancel' | translate"
     severity="secondary"

@@ -19,7 +19,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'public-search-main',
     template: `
-    <div class="mt-2 p-8 surface-ground">
+    <div class="mt-2 p-20 bg-surface-50 dark:bg-surface-950">
         <h1 class="text-center" translate>Public search</h1>
     </div>
 `,

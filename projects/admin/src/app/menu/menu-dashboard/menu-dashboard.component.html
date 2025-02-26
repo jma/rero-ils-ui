@@ -14,11 +14,11 @@
   You should have received a copy of the GNU Affero General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<div class="grid justify-content-center">
+<div class="grid grid-cols-12 gap-4 justify-center">
   @for (item of items; track item) {
       <p-card class="col">
         <ng-template pTemplate="header">
-          <div class="bg-blue-900 text-white gap-1 flex align-items-center p-3 font-bold border-round-top">
+          <div class="bg-blue-900 text-white gap-1 flex items-center p-4 font-bold rounded-t">
             @if (item.icon) {
               <i [class]="item.icon"></i>
             }
@@ -30,7 +30,7 @@
             <ng-template pTemplate="item" let-item>
               <a
                 pRipple
-                class="flex align-items-center p-element p-menuitem-link"
+                class="flex items-center p-element p-menuitem-link"
                 [attr.id]="item.id"
                 [routerLink]="item.routerLink"
                 [href]="item.url"
@@ -41,7 +41,7 @@
                 }
                 <span>{{ item.label }}</span>
                 @if (item.shortcut) {
-                  <span class="ml-auto border-1 surface-border border-round surface-100 text-sm px-2 py-1">
+                  <span class="ml-auto border border-surface rounded-border bg-surface-100 dark:bg-surface-700 text-sm px-2 py-1">
                     {{ item.shortcut }}
                 </span>
                 }

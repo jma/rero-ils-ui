@@ -97,7 +97,7 @@ export class ChangePasswordFormComponent implements OnInit {
           key: 'password',
           type: 'passwordGenerator',
           props: {
-            class: 'surface-100',
+            class: 'bg-surface-100 dark:bg-surface-700',
             api: "/api/user/password/generate",
             label: 'New password',
             required: true,

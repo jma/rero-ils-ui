@@ -25,7 +25,7 @@
   <p-tag severity="warning" [value]="'Remote' | translate" />
 
   <!-- SOURCES -->
-   <div class="mt-2 flex flex-column gap-2">
+   <div class="mt-2 flex flex-col gap-2">
     @for (source of $any(record).metadata.sources.sort(); track source) {
       <p-panel>
         <ng-template pTemplate="header">

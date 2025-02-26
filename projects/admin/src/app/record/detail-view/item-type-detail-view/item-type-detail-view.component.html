@@ -40,7 +40,7 @@
       <ul class="list-none m-0 p-0">
         @for (status of record.metadata.displayed_status; track status) {
           <li>
-            <div class="font-bold w-5rem inline-block">
+            <div class="font-bold w-20 inline-block">
               <i class="fa fa-language"></i>&nbsp;({{ status.language }})
             </div>
             {{ status.label }}
@@ -55,7 +55,7 @@
       <ul class="list-none m-0 p-0">
         @for (circulation of record.metadata.circulation_information; track circulation) {
           <li>
-            <div class="font-bold w-5rem inline-block">
+            <div class="font-bold w-20 inline-block">
               <i class="fa fa-language"></i> ({{ circulation.language }})
             </div>
             {{ circulation.label }}

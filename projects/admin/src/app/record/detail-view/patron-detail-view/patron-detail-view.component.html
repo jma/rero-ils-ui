@@ -27,13 +27,13 @@
     />
   }
 
-  <section id="contact-profile" class="flex flex-column gap-2">
+  <section id="contact-profile" class="flex flex-col gap-2">
     <!-- MAIN PROFILE SECTION ================================================== -->
-    <div class="border-round border-1 surface-border flex gap-4 p-4">
-        <div class="surface-500 border-circle w-10rem h-10rem flex align-items-center justify-content-center">
+    <div class="rounded-border border border-surface flex gap-6 p-6">
+        <div class="bg-surface-500 dark:bg-surface-300 rounded-full w-40 h-40 flex items-center justify-center">
           <i class="fa fa-user-o fa-4x text-white"></i>
         </div>
-      <div class="flex-grow-1">
+      <div class="grow">
         <h1>
           {{ patron.last_name }} {{ patron.first_name }}
           @if (patron.patron) {
@@ -70,7 +70,7 @@
                 <ul class="list-none m-0 p-0">
                   @for (phone of patronPhones; track phone) {
                     <li>
-                      {{ phone.value }} <span class="font-bold text-color-secondary lowercase" >({{ phone.type | translate }})</span>
+                      {{ phone.value }} <span class="font-bold text-muted-color lowercase" >({{ phone.type | translate }})</span>
                     </li>
                   }
                 </ul>
@@ -98,8 +98,8 @@
       </div>
     </div>
 
-    <div class="border-round border-1 surface-border flex gap-4 p-4">
-    <p-accordion class="flex-grow-1" [activeIndex]="[0, 1]" [multiple]="true">
+    <div class="rounded-border border border-surface flex gap-6 p-6">
+    <p-accordion class="grow" [activeIndex]="[0, 1]" [multiple]="true">
       <!-- NOTES ================================================================= -->
       @if (patron.notes && patron.notes.length > 0) {
       <p-accordionTab>

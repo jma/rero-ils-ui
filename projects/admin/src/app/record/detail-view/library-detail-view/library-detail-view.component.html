@@ -16,12 +16,12 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 @if (record) {
-  <section id="library-profile" class="flex flex-column gap-2">
-    <div class="border-round border-1 surface-border flex gap-4 p-4">
-      <div class="surface-500 border-circle w-10rem h-10rem flex align-items-center justify-content-center">
+  <section id="library-profile" class="flex flex-col gap-2">
+    <div class="rounded-border border border-surface flex gap-6 p-6">
+      <div class="bg-surface-500 dark:bg-surface-300 rounded-full w-40 h-40 flex items-center justify-center">
         <i class="fa fa-university fa-4x text-white"></i>
       </div>
-    <div class="flex-grow-1">
+    <div class="grow">
         <h1>{{ record.name }}</h1>
         <dl class="metadata">
           <dt><i class="fa fa-code"></i>&nbsp;<span translate>Code</span></dt>
@@ -45,7 +45,7 @@
     <!-- locations ======================================================== -->
     <p-accordionTab #locTab>
       <ng-template pTemplate="header">
-        <div class="flex w-full align-items-center justify-content-between mr-2">
+        <div class="flex w-full items-center justify-between mr-2">
           <div>
             <i class="fa fa-map-marker"></i>&nbsp;<span translate>Locations</span>
           </div>
@@ -64,7 +64,7 @@
       @if (locations) {
         <ul class="list-none p-0 m-0">
           @for (location of locations; track location; let last=$last) {
-            <li [ngClass]="{'border-bottom-1': !last}" class="py-2 surface-border">
+            <li [ngClass]="{'border-bottom-1': !last}" class="py-2 border-surface">
               <admin-location [location]="location" [library]="record" (deleteLocation)="deleteLocation($event)" />
             </li>
           }
@@ -76,7 +76,7 @@
     <!-- opening hours ==================================================== -->
     <p-accordionTab>
       <ng-template pTemplate="header">
-        <div class="flex w-full align-items-center justify-content-between mr-2">
+        <div class="flex w-full items-center justify-between mr-2">
           <div>
             <i class="fa fa-clock-o"></i>&nbsp;
             <span translate>Opening Hours</span>
@@ -96,7 +96,7 @@
     @if (record.exception_dates) {
       <p-accordionTab>
         <ng-template pTemplate="header">
-          <div class="flex w-full align-items-center justify-content-between mr-2">
+          <div class="flex w-full items-center justify-between mr-2">
             <div>
             <i class="fa fa-exclamation-triangle"></i>&nbsp;
             <span translate>Exceptions (holidays, etc.)</span>
@@ -104,7 +104,7 @@
             <p-badge [value]="record.exception_dates.length" />
         </div>
         </ng-template>
-        <div class="alternate-color mt-4">
+        <div class="alternate-color mt-6">
         @for (exception of record.exception_dates; track exception) {
           <admin-exception-date [exception]="exception" />
         }
@@ -149,7 +149,7 @@
             <span translate>Default acquisition settings</span>
           </div>
         </p-divider>
-        <div class="grid">
+        <div class="grid grid-cols-12 gap-4">
           @if (acquisitionSettings.shipping_informations; as acqInfos) {
             <ng-container [ngTemplateOutlet]="address_block"
                           [ngTemplateOutletContext]="{ label: 'Shipping informations' | translate, data: acqInfos, icon: 'fa-truck'}"
@@ -169,7 +169,7 @@
             <span translate>Serial acquisition settings</span>
           </div>
         </p-divider>
-        <div class="grid justify-content-start">
+        <div class="grid grid-cols-12 gap-4 justify-start">
           @if (acquisitionSettings.shipping_informations; as acqInfos) {
             <ng-container [ngTemplateOutlet]="address_block"
                           [ngTemplateOutletContext]="{ label: 'Shipping informations' | translate, data: acqInfos, icon: 'fa-truck'}"
@@ -187,7 +187,7 @@
     @if (record.rollover_settings) {
       <p-accordionTab>
         <ng-template pTemplate="header">
-          <div class="flex w-full align-items-center justify-content-between mr-2">
+          <div class="flex w-full items-center justify-between mr-2">
             <div>
               <i class="fa fa-wrench mr-2"></i>&nbsp;
               <span translate>Rollover settings</span>
@@ -209,7 +209,7 @@
   </p-accordion>
 
   <ng-template #address_block let-label="label" let-icon="icon" let-data="data">
-    <p-fieldset class="col-6">
+    <p-fieldset class="col-span-6">
       <ng-template pTemplate="header">
         <p-tag class="mx-2">
           @if (icon) {
@@ -218,7 +218,7 @@
           {{ label }}
         </p-tag>
       </ng-template>
-      <div class="flex gap-2 flex-column">
+      <div class="flex gap-2 flex-col">
         <div class="flex gap-2">
           <i class="fa fa-home"></i>
           <div>
@@ -246,19 +246,19 @@
           </div>
         </div>
         @if (data.email) {
-          <div class="flex gap-2 align-items-center">
+          <div class="flex gap-2 items-center">
             <i class="fa fa-at"></i>
             <span>{{ data.email }}</span>
           </div>
         }
         @if (data.phone) {
-          <div class="flex gap-2 align-items-center">
+          <div class="flex gap-2 items-center">
             <i class="fa fa-phone-square"></i>
             <span>{{ data.phone }}</span>
           </div>
         }
         @if (data.extra) {
-          <div class="flex gap-2 align-items-center">
+          <div class="flex gap-2 items-center">
             <i class="fa fa-sticky-note-o"></i>
             <span>{{ data.extra }}</span>
           </div>

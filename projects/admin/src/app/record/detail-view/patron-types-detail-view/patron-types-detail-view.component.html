@@ -43,12 +43,12 @@
   </dl>
     <!-- Limits -->
     @if (record.metadata.limits) {
-      <section class="flex flex-column gap-2">
+      <section class="flex flex-col gap-2">
         <h2 translate>Limits</h2>
         <!-- Checkout limits -->
         <p-panel [collapsed]="!record?.metadata?.limits?.checkout_limits">
           <ng-template pTemplate="header">
-            <div class="flex align-items-center gap-2 px-2">
+            <div class="flex items-center gap-2 px-2">
               <i class="fa" [ngClass]="{
                 'fa-circle text-success': record.metadata.limits.checkout_limits,
                 'fa-circle-thin': !record.metadata.limits.checkout_limits
@@ -69,12 +69,12 @@
                 <dd class="col">
                   <ul class="list-none m-0 p-0">
                     @for (exception of record.metadata.limits.checkout_limits.library_exceptions; track exception) {
-                      <li class="grid grid-nogutter">
-                        <div class="col-10">
+                      <li class="grid grid-cols-12 gap-4 grid-nogutter">
+                        <div class="col-span-10">
                           <i class="fa fa-university"></i>&nbsp;
                           {{ exception.library.pid | getRecord: 'libraries' : 'field' : 'name' | async }}
                         </div>
-                        <div class="col-2">{{ exception.value }}</div>
+                        <div class="col-span-2">{{ exception.value }}</div>
                       </li>
                     }
                   </ul>
@@ -86,7 +86,7 @@
 
         <p-panel [collapsed]="!record?.metadata?.limits?.fee_amount_limits">
           <ng-template pTemplate="header">
-            <div class="flex align-items-center gap-2 px-2">
+            <div class="flex items-center gap-2 px-2">
               <i class="fa" [ngClass]="{
                 'fa-circle text-success': record.metadata.limits.fee_amount_limits,
                 'fa-circle-thin': !record.metadata.limits.fee_amount_limits
@@ -104,7 +104,7 @@
 
         <p-panel [collapsed]="!record?.metadata?.limits?.overdue_items_limits">
           <ng-template pTemplate="header">
-            <div class="flex align-items-center gap-2 px-2">
+            <div class="flex items-center gap-2 px-2">
               <i class="fa" [ngClass]="{
                 'fa-circle text-success': record.metadata.limits.overdue_items_limits,
                 'fa-circle-thin': !record.metadata.limits.overdue_items_limits
@@ -122,7 +122,7 @@
 
         <p-panel collapsed>
           <ng-template pTemplate="header">
-            <div class="flex align-items-center gap-2 px-2">
+            <div class="flex items-center gap-2 px-2">
               <i class="fa" [ngClass]="{
                 'fa-circle text-success': record.metadata.limits.unpaid_subscription,
                 'fa-circle-thin': !record.metadata.limits.unpaid_subscription

@@ -33,7 +33,7 @@
   @if (messages()) {
     <p-messages [escape]="false" [value]="messages()" [enableService]="false" [closable]="false" />
   }
-  <div class="text-sm grid data">
+  <div class="text-sm grid grid-cols-12 gap-4 data">
     <div class="markdown col" [innerHTML]="record().raw | markdown"></div>
     <div
       class="json col"

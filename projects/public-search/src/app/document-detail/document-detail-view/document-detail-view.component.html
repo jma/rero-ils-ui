@@ -16,7 +16,6 @@
 -->
 
 <ngx-loading-bar [includeSpinner]="false" height="3px" />
-
 @if (document) {
 <p-tabView [activeIndex]="0">
   <p-tabPanel [header]="'Get' | translate">
@@ -40,9 +39,9 @@
 
 <p-menubar [model]="exportItems">
   <ng-template pTemplate="item" let-item>
-      <a [href]="item.url" class="p-2 flex flex-column align-items-center justify-content-center w-6rem" download>
+      <a [href]="item.url" class="p-2 flex flex-col items-center justify-center w-24" download>
       <i [ngClass]="[item.icon, 'fa-2x mb-1 text-color-secondary']"></i>
-      <span class="text-center text-xs text-color-secondary">{{item.label}}</span>
+      <span class="text-center text-xs text-muted-color">{{item.label}}</span>
       </a>
   </ng-template>
 </p-menubar>

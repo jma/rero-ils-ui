@@ -19,7 +19,7 @@
     @if (item.routerLink && !item.url) {
       <span
         pRipple
-        class="flex align-items-center p-element p-menuitem-link"
+        class="flex items-center p-element p-menuitem-link"
         [id]="item.id"
         [routerLink]="item.routerLink"
         [queryParams]="item.queryParams"
@@ -32,14 +32,14 @@
           <p-badge [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge"></p-badge>
         }
         @if (item.shortcut) {
-          <span class="ml-auto border-1 surface-border border-round surface-100 text-sm px-2 py-1">{{ item.shortcut }}</span>
+          <span class="ml-auto border border-surface rounded-border bg-surface-100 dark:bg-surface-700 text-sm px-2 py-1">{{ item.shortcut }}</span>
         }
       </span>
     }
     @if (item.url && !item.routerLink) {
       <a
         pRipple
-        class="flex align-items-center p-element p-menuitem-link"
+        class="flex items-center p-element p-menuitem-link"
         [id]="item.id"
         [href]="item.url"
         [target]="item.target"
@@ -52,7 +52,7 @@
           <p-badge [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge"></p-badge>
         }
         @if (item.shortcut) {
-          <span class="ml-auto border-1 surface-border border-round surface-100 text-sm px-2 py-1">{{ item.shortcut }}</span>
+          <span class="ml-auto border border-surface rounded-border bg-surface-100 dark:bg-surface-700 text-sm px-2 py-1">{{ item.shortcut }}</span>
         }
       </a>
     }

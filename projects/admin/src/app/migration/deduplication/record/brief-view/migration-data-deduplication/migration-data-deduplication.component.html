@@ -16,8 +16,8 @@
 -->
 
 @if (record()) {
-<div class="flex justify-content-between mb-2">
-  <div class="flex align-items-center justify-content-center">
+<div class="flex justify-between mb-2">
+  <div class="flex items-center justify-center">
     <p-inplace #inplace>
       <ng-template pTemplate="display">
         <strong>ILS pid:</strong> {{ ilsPid }}&nbsp;<i class="pi pi-pencil"></i>
@@ -36,7 +36,7 @@
       </ng-template>
     </p-inplace>
   </div>
-  <div class="flex align-items-center justify-content-center">
+  <div class="flex items-center justify-center">
     <p-button
       icon="pi pi-chevron-left"
       (click)="previousCandidate()"
@@ -56,7 +56,7 @@
       [text]="true"
     />
   </div>
-  <div class="flex align-items-center gap-2 justify-content-center">
+  <div class="flex items-center gap-2 justify-center">
     <p-button
       size="small"
       outlined
@@ -85,8 +85,8 @@
   />
 }
 
-<div class="flex justify-content-between mb-1">
-  <div class="flex align-items-center justify-content-center">
+<div class="flex justify-between mb-1">
+  <div class="flex items-center justify-center">
     <p-tag
       [severity]="
         status() === 'match'
@@ -109,7 +109,7 @@
   </div>
 
   @if (currentCandidate){
-  <div class="flex align-items-center justify-content-center">
+  <div class="flex items-center justify-center">
     @if(currentCandidate?.score) {
     <strong translate>Score</strong>&nbsp;{{ currentCandidate.score | number }}
     } @else {

@@ -18,22 +18,22 @@
   <ng-template pTemplate="header">
     <!-- MAIN ROW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
     <div class="w-full">
-      <div class="grid align-items-center">
-        <div id="holding-location-{{ holding.metadata.pid }}" class="col-6">
+      <div class="grid grid-cols-12 gap-4 items-center">
+        <div id="holding-location-{{ holding.metadata.pid }}" class="col-span-6">
           @if (holding.metadata._masked) {
             <admin-record-masked [record]="holding"></admin-record-masked>
           }
           <span>{{ holding.metadata.library.name }}: {{ holding.metadata.location.name }}</span>
         </div>
 
-        <div class="col-2">
+        <div class="col-span-2">
           {{ holding.metadata.circulation_category.circulation_information | getTranslatedLabel : language }}
         </div>
 
         @if (holdingType === 'serial') {
-          <div class="col-4 justify-content-end flex">
+          <div class="col-span-4 justify-end flex">
             @if (permissions) {
-              <div class="flex gap-1 mr-3">
+              <div class="flex gap-1 mr-4">
                 <!-- HOLDING VIEW -->
                 <p-button
                   icon="fa fa-eye"
@@ -88,7 +88,7 @@
               </div>
             }
           </div>
-          <admin-holding-detail context="document" [holding]="holding" class="col-12"></admin-holding-detail>
+          <admin-holding-detail context="document" [holding]="holding" class="col-span-12"></admin-holding-detail>
         }
     </div>
   </div>
@@ -107,11 +107,11 @@
         <!-- SERIAL HOLDING -->
         @case ('serial') {
           @if (items) {
-            <div class="grid grid-nogutter py-2 px-1 font-bold">
-              <div class="col-3" translate>Barcode</div>
-              <div class="col-3" translate>Status</div>
-              <div class="col-3" translate>Unit</div>
-              <div class="col-3" translate>Call number</div>
+            <div class="grid grid-cols-12 gap-4 grid-nogutter py-2 px-1 font-bold">
+              <div class="col-span-3" translate>Barcode</div>
+              <div class="col-span-3" translate>Status</div>
+              <div class="col-span-3" translate>Unit</div>
+              <div class="col-span-3" translate>Call number</div>
             </div>
             <div class="alternate-color">
             @for (item of items | slice:0: displayItemsCounter; track item) {
@@ -125,7 +125,7 @@
             }
             </div>
             @if (displayItemsCounter < totalItemsCounter) {
-              <div class="grid">
+              <div class="grid grid-cols-12 gap-4">
                 <p-button [link]="true" (onClick)="showMore(5)" [attr.id]="holding.metadata.pid | idAttribute:{prefix: 'holding', suffix: 'show-more-button'}">
                   <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
                   {{ 'Show more' | translate }} ...
@@ -134,8 +134,8 @@
               </div>
             }
           } @else {
-            <div class="grid">
-              <div class="offset-1 col-11" translate>No item received.</div>
+            <div class="grid grid-cols-12 gap-4">
+              <div class="offset-1 col-span-11" translate>No item received.</div>
             </div>
           }
         }
@@ -152,7 +152,7 @@
                 </admin-default-holding-item>
             }
             @if (displayItemsCounter < totalItemsCounter) {
-              <div class="row pl-3">
+              <div class="row pl-4">
                 <a [routerLink]="[]" (click)="showMore(5)" [attr.id]="holding.metadata.pid | idAttribute:{prefix: 'holding', suffix: 'show-more-button'}">
                   <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
                   {{ 'Show more' | translate }} ...

@@ -24,7 +24,7 @@ import { map } from 'rxjs/operators';
     selector: 'admin-error-page',
     template: `
     <div class="alert alert-{{ messages[statusCode].level || 'danger' }}">
-      <h1 class="alert-heading mb-4">{{ statusCode }} - {{ messages[statusCode].title }}</h1>
+      <h1 class="alert-heading mb-6">{{ statusCode }} - {{ messages[statusCode].title }}</h1>
       @for (text of messages[statusCode].description || []; track text) {
         <pre>{{ text }}</pre>
       }

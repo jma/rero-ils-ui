@@ -21,7 +21,7 @@ import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiService, Record, RecordService } from '@rero/ng-core';
-import { PrimeNGConfig } from 'primeng/api';
+import { PrimeNG } from 'primeng/config';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Observable, Subscription, forkJoin, map, of, switchMap, tap } from 'rxjs';
 
@@ -45,7 +45,7 @@ export interface File {
 })
 export class FilesComponent implements OnInit, OnDestroy {
 
-  protected ngConfigService: PrimeNGConfig = inject(PrimeNGConfig);
+  protected ngConfigService: PrimeNG = inject(PrimeNG);
   protected httpService: HttpClient = inject(HttpClient);
   protected translateService: TranslateService = inject(TranslateService);
   protected recordService: RecordService = inject(RecordService);

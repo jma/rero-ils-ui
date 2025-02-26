@@ -30,7 +30,7 @@
 </ngx-spinner>
 
 @if (files != null) {
-<div class="flex flex-column gap-2 py-2">
+<div class="flex flex-col gap-2 py-2">
   <admin-files-collections />
   <div>
     <h5 translate>Upload Files</h5>
@@ -103,11 +103,11 @@
   </div>
 
   @if(filteredFiles.length > 0) {
-  <ul class="list-none alternate-color border-1 surface-border border-round p-2 m-0">
+  <ul class="list-none alternate-color border border-surface rounded-border p-2 m-0">
     @for (file of filteredFiles;track file.label) {
     <li>
-      <div class="grid align-items-center">
-        <div class="col-6">
+      <div class="grid grid-cols-12 gap-4 items-center">
+        <div class="col-span-6">
           <a
             class="text-link"
             tabindex="-1"
@@ -123,7 +123,7 @@
             >{{ file.key }} <i class="fa fa-download"></i
           ></a>
         </div>
-        <div class="col-5">
+        <div class="col-span-5">
           <div class="input-group">
             <p-inputGroup>
               <input
@@ -150,7 +150,7 @@
             </p-inputGroup>
           </div>
         </div>
-        <div class="col-1 flex justify-content-end">
+        <div class="col-span-1 flex justify-end">
           <p-button
             outlined
             tabindex="-1"

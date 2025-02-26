@@ -206,14 +206,14 @@ export class DocumentAdvancedSearchFormComponent implements OnInit {
     this.fieldsSearchTypeConfig = this.advancedSearchService.getFieldsSearchType();
     this.fieldsConfig = [
       {
-        fieldGroupClassName: 'grid',
+        fieldGroupClassName: 'grid grid-cols-12 gap-4',
         fieldGroup: [
           {
-            fieldGroupClassName: 'grid',
-            className: 'col-11',
+            fieldGroupClassName: 'grid grid-cols-12 gap-4',
+            className: 'col-span-11',
             fieldGroup: [
               {
-                className: 'col-6',
+                className: 'col-span-6',
                 type: 'select',
                 key: 'field',
                 props: {
@@ -227,7 +227,7 @@ export class DocumentAdvancedSearchFormComponent implements OnInit {
                 },
               },
               {
-                className: 'col-2',
+                className: 'col-span-2',
                 type: 'select',
                 key: 'searchType',
                 defaultValue: false,
@@ -241,7 +241,7 @@ export class DocumentAdvancedSearchFormComponent implements OnInit {
                 }
               },
               {
-                className: 'col-4',
+                className: 'col-span-4',
                 type: 'custom-field',
                 key: 'term',
                 props: {
@@ -267,10 +267,10 @@ export class DocumentAdvancedSearchFormComponent implements OnInit {
         fieldArray: {
           fieldGroup: [
             {
-              fieldGroupClassName: 'grid',
+              fieldGroupClassName: 'grid grid-cols-12 gap-4',
               fieldGroup: [
                 {
-                  className: 'col-2',
+                  className: 'col-span-2',
                   type: 'select',
                   key: 'operator',
                   defaultValue: AdvancedSearchService.OPERATOR_AND,
@@ -282,7 +282,7 @@ export class DocumentAdvancedSearchFormComponent implements OnInit {
                   },
                 },
                 {
-                  className: 'col-4',
+                  className: 'col-span-4',
                   type: 'select',
                   key: 'field',
                   props: {
@@ -296,7 +296,7 @@ export class DocumentAdvancedSearchFormComponent implements OnInit {
                   },
                 },
                 {
-                  className: 'col-2',
+                  className: 'col-span-2',
                   type: 'select',
                   key: 'searchType',
                   defaultValue: false,
@@ -310,7 +310,7 @@ export class DocumentAdvancedSearchFormComponent implements OnInit {
                   }
                 },
                 {
-                  className: 'col-4',
+                  className: 'col-span-4',
                   type: 'custom-field',
                   key: 'term',
                   props: {
