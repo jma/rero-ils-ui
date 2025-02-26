@@ -21,8 +21,9 @@ import { OperationLogsComponent } from '../operation-logs.component';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'admin-operation-logs-dialog',
-  templateUrl: './operation-logs-dialog.component.html'
+    selector: 'admin-operation-logs-dialog',
+    templateUrl: './operation-logs-dialog.component.html',
+    standalone: false
 })
 export class OperationLogsDialogComponent {
 

@@ -23,8 +23,8 @@ import { DocumentAdvancedSearchFormComponent } from './document-advanced-search-
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'admin-document-advanced-search',
-  template: `
+    selector: 'admin-document-advanced-search',
+    template: `
     @if (!simple) {
       <p-button
         [label]="'Build advanced query' | translate"
@@ -34,7 +34,8 @@ import { TranslateService } from '@ngx-translate/core';
         (onClick)="openModalBox()"
       />
     }
-  `
+  `,
+    standalone: false
 })
 export class DocumentAdvancedSearchComponent implements OnInit, OnDestroy {
 

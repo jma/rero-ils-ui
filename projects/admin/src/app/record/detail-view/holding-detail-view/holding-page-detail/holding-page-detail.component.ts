@@ -19,8 +19,9 @@ import { OperationLogsService } from '@app/admin/service/operation-logs.service'
 import { DetailComponent } from '@rero/ng-core';
 
 @Component({
-  selector: 'admin-holding-page-detail',
-  templateUrl: './holding-page-detail.component.html'
+    selector: 'admin-holding-page-detail',
+    templateUrl: './holding-page-detail.component.html',
+    standalone: false
 })
 export class HoldingPageDetailComponent extends DetailComponent {
 

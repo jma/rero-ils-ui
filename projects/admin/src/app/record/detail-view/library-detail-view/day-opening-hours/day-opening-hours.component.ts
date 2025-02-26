@@ -18,8 +18,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'admin-day-opening-hours',
-  template: `
+    selector: 'admin-day-opening-hours',
+    template: `
     <dl class="metadata">
       <dt>{{ day.day | translate }}</dt>
       <dd>
@@ -37,7 +37,8 @@ import { Component, Input } from '@angular/core';
       </dd>
     </dl>
   `,
-  styleUrls: ['./day-opening-hours.component.scss']
+    styleUrls: ['./day-opening-hours.component.scss'],
+    standalone: false
 })
 export class DayOpeningHoursComponent {
   @Input() day: any;

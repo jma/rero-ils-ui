@@ -30,8 +30,9 @@ import { CirculationStatistics } from '../../circulationStatistics';
 import { CirculationService } from '../../services/circulation.service';
 
 @Component({
-  selector: 'admin-main',
-  templateUrl: './main.component.html'
+    selector: 'admin-main',
+    templateUrl: './main.component.html',
+    standalone: false
 })
 export class MainComponent implements OnInit, OnDestroy {
 

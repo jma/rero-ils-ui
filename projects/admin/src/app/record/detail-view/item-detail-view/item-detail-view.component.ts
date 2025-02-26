@@ -29,10 +29,11 @@ import { OperationLogsService } from '../../../service/operation-logs.service';
 import { OrganisationService } from '../../../service/organisation.service';
 
 @Component({
-  selector: 'admin-item-detail-view',
-  templateUrl: './item-detail-view.component.html',
-  providers: [IssueService],
-  styles: ['dl * { margin-bottom: 0; }']
+    selector: 'admin-item-detail-view',
+    templateUrl: './item-detail-view.component.html',
+    providers: [IssueService],
+    styles: ['dl * { margin-bottom: 0; }'],
+    standalone: false
 })
 export class ItemDetailViewComponent implements OnChanges, OnDestroy {
 

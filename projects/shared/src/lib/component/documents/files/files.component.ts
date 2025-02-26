@@ -39,8 +39,9 @@ export interface File {
 
 // Component itself
 @Component({
-  selector: 'shared-doc-files',
-  templateUrl: './files.component.html'
+    selector: 'shared-doc-files',
+    templateUrl: './files.component.html',
+    standalone: false
 })
 export class FilesComponent implements OnInit, OnDestroy {
 

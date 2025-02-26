@@ -28,8 +28,9 @@ import { IAcqReceiptModel, ICreateLineMessage, OrderReceipt } from './order-rece
 import { OrderReceiptForm } from './order-receipt-form';
 
 @Component({
-  selector: 'admin-order-receipt-view',
-  templateUrl: './order-receipt-view.component.html'
+    selector: 'admin-order-receipt-view',
+    templateUrl: './order-receipt-view.component.html',
+    standalone: false
 })
 export class OrderReceiptViewComponent implements OnInit {
 

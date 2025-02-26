@@ -18,8 +18,8 @@ import { Component } from '@angular/core';
 import { FieldArrayType } from '@ngx-formly/core';
 
 @Component({
-  selector: 'admin-formly-repeat-section',
-  template: `
+    selector: 'admin-formly-repeat-section',
+    template: `
     <p-panel styleClass="mb-2">
       <ng-template pTemplate="header">
         @if (field.props.label || field.props.addButton) {
@@ -88,7 +88,8 @@ import { FieldArrayType } from '@ngx-formly/core';
         </div>
       }
     </p-panel>
-  `
+  `,
+    standalone: false
 })
 export class RepeatTypeComponent extends FieldArrayType {
 

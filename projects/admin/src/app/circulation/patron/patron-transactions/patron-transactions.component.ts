@@ -32,8 +32,9 @@ import { PatronTransactionEventFormComponent } from './patron-transaction-event-
 import { AccordionTabOpenEvent } from 'primeng/accordion';
 
 @Component({
-  selector: 'admin-patron-transactions',
-  templateUrl: './patron-transactions.component.html'
+    selector: 'admin-patron-transactions',
+    templateUrl: './patron-transactions.component.html',
+    standalone: false
 })
 export class PatronTransactionsComponent implements OnInit, OnDestroy {
 

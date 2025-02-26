@@ -31,8 +31,9 @@ import { DropdownChangeEvent } from 'primeng/dropdown';
 
 
 @Component({
-  selector: 'admin-patron-transaction',
-  templateUrl: './patron-transaction.component.html'
+    selector: 'admin-patron-transaction',
+    templateUrl: './patron-transaction.component.html',
+    standalone: false
 })
 export class PatronTransactionComponent implements OnInit {
 

@@ -23,8 +23,9 @@ import { ChangePasswordFormComponent } from '../change-password-form/change-pass
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'admin-profile',
-  templateUrl: './profile.component.html'
+    selector: 'admin-profile',
+    templateUrl: './profile.component.html',
+    standalone: false
 })
 export class ProfileComponent implements OnInit, OnDestroy {
 

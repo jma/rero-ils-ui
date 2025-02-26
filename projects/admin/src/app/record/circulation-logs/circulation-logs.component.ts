@@ -27,8 +27,9 @@ import { map, switchMap } from 'rxjs/operators';
 import { OperationLogsApiService } from '../../api/operation-logs-api.service';
 
 @Component({
-  selector: 'admin-circulation-logs',
-  templateUrl: './circulation-logs.component.html'
+    selector: 'admin-circulation-logs',
+    templateUrl: './circulation-logs.component.html',
+    standalone: false
 })
 export class CirculationLogsComponent implements OnInit, OnDestroy {
 

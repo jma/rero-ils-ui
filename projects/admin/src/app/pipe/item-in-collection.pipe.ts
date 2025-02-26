@@ -21,7 +21,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Pipe({
-  name: 'itemInCollection'
+    name: 'itemInCollection',
+    standalone: false
 })
 export class ItemInCollectionPipe implements PipeTransform {
 

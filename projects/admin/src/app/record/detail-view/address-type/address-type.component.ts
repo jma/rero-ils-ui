@@ -18,9 +18,10 @@ import { Component, input } from '@angular/core';
 import { AddressType } from '../../../classes/address-type';
 
 @Component({
-  selector: 'admin-address-type',
-  templateUrl: './address-type.component.html',
-  styleUrls: []
+    selector: 'admin-address-type',
+    templateUrl: './address-type.component.html',
+    styleUrls: [],
+    standalone: false
 })
 export class AddressTypeComponent {
 

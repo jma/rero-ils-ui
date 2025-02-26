@@ -23,8 +23,8 @@ import { AddEntityLocalFormComponent } from './add-entity-local-form/add-entity-
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'admin-entity-autocomplete',
-  template: `
+    selector: 'admin-entity-autocomplete',
+    template: `
   <div class="flex w-full">
     @if (!field.formControl.value) {
       @if (props.filters?.options) {
@@ -87,7 +87,8 @@ import { Observable, Subscription } from 'rxjs';
         <p-button icon="fa fa-trash" severity="secondary" [text]="true" (onClick)="clear()" styleClass="ml-1" />
       </div>
     }
-  </div>`
+  </div>`,
+    standalone: false
 })
 export class EntityAutocompleteComponent extends RemoteAutocomplete implements OnDestroy {
 

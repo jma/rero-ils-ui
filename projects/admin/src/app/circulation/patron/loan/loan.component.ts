@@ -31,9 +31,10 @@ import { LoanFixedDateService } from '../../services/loan-fixed-date.service';
 import { CirculationSettingsService, ICirculationSetting } from './circulation-settings/circulation-settings.service';
 
 @Component({
-  selector: 'admin-loan',
-  templateUrl: './loan.component.html',
-  providers: [ DateTranslatePipe, LoanFixedDateService ]
+    selector: 'admin-loan',
+    templateUrl: './loan.component.html',
+    providers: [DateTranslatePipe, LoanFixedDateService],
+    standalone: false
 })
 export class LoanComponent implements OnInit, OnDestroy {
 

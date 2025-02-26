@@ -23,8 +23,9 @@ import { TabViewChangeEvent } from "primeng/tabview";
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
-  selector: "admin-statistics-cfg-view",
-  templateUrl: "./statistics-cfg-detail-view.component.html",
+    selector: "admin-statistics-cfg-view",
+    templateUrl: "./statistics-cfg-detail-view.component.html",
+    standalone: false
 })
 export class StatisticsCfgDetailViewComponent implements DetailRecord, OnInit, OnDestroy {
 

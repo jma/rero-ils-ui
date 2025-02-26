@@ -27,8 +27,9 @@ import { forkJoin } from 'rxjs';
 import { ItemRequestComponent } from '../../item-request/item-request.component';
 
 @Component({
-  selector: 'admin-default-holding-item',
-  templateUrl: './default-holding-item.component.html'
+    selector: 'admin-default-holding-item',
+    templateUrl: './default-holding-item.component.html',
+    standalone: false
 })
 export class DefaultHoldingItemComponent implements OnInit {
 

@@ -27,8 +27,9 @@ import { IFieldsData, IFieldsType, ISearchModel } from './i-advanced-search-conf
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'admin-document-advanced-search-form',
-  templateUrl: './document-advanced-search-form.component.html'
+    selector: 'admin-document-advanced-search-form',
+    templateUrl: './document-advanced-search-form.component.html',
+    standalone: false
 })
 export class DocumentAdvancedSearchFormComponent implements OnInit {
 

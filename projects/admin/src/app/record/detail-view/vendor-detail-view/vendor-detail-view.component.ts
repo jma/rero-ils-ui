@@ -21,8 +21,9 @@ import { Observable } from 'rxjs';
 import { OperationLogsService } from '../../../service/operation-logs.service';
 
 @Component({
-  selector: 'admin-vendor-detail-view',
-  templateUrl: './vendor-detail-view.component.html'
+    selector: 'admin-vendor-detail-view',
+    templateUrl: './vendor-detail-view.component.html',
+    standalone: false
 })
 export class VendorDetailViewComponent implements DetailRecord {
 

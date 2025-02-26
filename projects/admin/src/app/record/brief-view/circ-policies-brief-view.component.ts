@@ -19,8 +19,8 @@ import { Component, Input } from '@angular/core';
 import { ResultItem } from '@rero/ng-core';
 
 @Component({
-  selector: 'admin-circ-policies-brief-view',
-  template: `
+    selector: 'admin-circ-policies-brief-view',
+    template: `
   <h5>
     <a [routerLink]="[detailUrl.link]">{{ record.metadata.name }}</a>&nbsp;
     <p-tag class="vertical-align-bottom" severity="secondary">
@@ -34,7 +34,8 @@ import { ResultItem } from '@rero/ng-core';
   @if (record.metadata.description) {
     <span [innerHtml]="record.metadata.description | nl2br"></span>
   }
-  `
+  `,
+    standalone: false
 })
 export class CircPoliciesBriefViewComponent implements ResultItem {
 

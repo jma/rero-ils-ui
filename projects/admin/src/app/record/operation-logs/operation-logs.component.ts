@@ -25,8 +25,9 @@ import { OperationLogsApiService } from '../../api/operation-logs-api.service';
 import { OperationLogsService } from '../../service/operation-logs.service';
 
 @Component({
-  selector: 'admin-operation-logs',
-  templateUrl: './operation-logs.component.html'
+    selector: 'admin-operation-logs',
+    templateUrl: './operation-logs.component.html',
+    standalone: false
 })
 export class OperationLogsComponent implements OnInit {
 

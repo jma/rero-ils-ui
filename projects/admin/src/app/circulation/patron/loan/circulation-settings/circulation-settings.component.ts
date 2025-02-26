@@ -24,8 +24,9 @@ import { FixedDateFormComponent } from '../fixed-date-form/fixed-date-form.compo
 import { CirculationSettingsService, ICirculationSetting } from './circulation-settings.service';
 
 @Component({
-  selector: 'admin-circulation-settings',
-  templateUrl: './circulation-settings.component.html'
+    selector: 'admin-circulation-settings',
+    templateUrl: './circulation-settings.component.html',
+    standalone: false
 })
 export class CirculationSettingsComponent implements OnInit {
 

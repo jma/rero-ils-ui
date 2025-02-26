@@ -30,8 +30,9 @@ import { PatronTransactionApiService } from 'projects/admin/src/app/api/patron-t
 import { OrganisationService } from 'projects/admin/src/app/service/organisation.service';
 
 @Component({
-  selector: 'admin-patron-fee',
-  templateUrl: './patron-fee.component.html'
+    selector: 'admin-patron-fee',
+    templateUrl: './patron-fee.component.html',
+    standalone: false
 })
 export class PatronFeeComponent implements OnInit {
 

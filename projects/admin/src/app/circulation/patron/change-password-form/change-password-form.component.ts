@@ -25,8 +25,9 @@ import { MessageService } from 'primeng/api';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
-  selector: 'admin-change-password-form',
-  templateUrl: './change-password-form.component.html'
+    selector: 'admin-change-password-form',
+    templateUrl: './change-password-form.component.html',
+    standalone: false
 })
 export class ChangePasswordFormComponent implements OnInit {
 

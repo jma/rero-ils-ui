@@ -27,8 +27,9 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogImportComponent } from '../dialog-import/dialog-import.component';
 
 @Component({
-  selector: 'admin-document-detail',
-  templateUrl: './document-detail.component.html',
+    selector: 'admin-document-detail',
+    templateUrl: './document-detail.component.html',
+    standalone: false
 })
 export class DocumentDetailComponent extends DetailComponent implements OnInit {
 

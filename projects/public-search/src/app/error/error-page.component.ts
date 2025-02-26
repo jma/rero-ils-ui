@@ -24,8 +24,8 @@ export function _(str: string) {
 }
 
 @Component({
-  selector: 'public-search-error-page',
-  template: `
+    selector: 'public-search-error-page',
+    template: `
     <p-messages
       [severity]="messages[statusCode].severity"
       [closable]="false"
@@ -40,7 +40,8 @@ export function _(str: string) {
     </div>
       </ng-template>
     </p-messages>
-  `
+  `,
+    standalone: false
 })
 
 export class ErrorPageComponent implements OnInit {

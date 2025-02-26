@@ -25,8 +25,9 @@ import { switchMap } from 'rxjs/operators';
 import { DocumentApiService } from '../../../api/document-api.service';
 
 @Component({
-  selector: 'admin-document-detail-view',
-  templateUrl: './document-detail-view.component.html'
+    selector: 'admin-document-detail-view',
+    templateUrl: './document-detail-view.component.html',
+    standalone: false
 })
 export class DocumentDetailViewComponent implements DetailRecord, OnInit, OnDestroy {
 

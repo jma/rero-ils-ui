@@ -23,8 +23,9 @@ import { OperationLogsApiService } from '../../../api/operation-logs-api.service
 import { PatronService } from '../../../service/patron.service';
 
 @Component({
-  selector: 'admin-history',
-  templateUrl: './history.component.html'
+    selector: 'admin-history',
+    templateUrl: './history.component.html',
+    standalone: false
 })
 export class HistoryComponent implements OnInit {
 

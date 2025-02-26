@@ -24,9 +24,10 @@ import { MessageService } from 'primeng/api';
 import { pairwise, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'admin-files-collections',
-  templateUrl: './files-collections.component.html',
-  styleUrl: './files-collections.component.scss',
+    selector: 'admin-files-collections',
+    templateUrl: './files-collections.component.html',
+    styleUrl: './files-collections.component.scss',
+    standalone: false
 })
 export class FilesCollectionsComponent implements OnInit, OnDestroy {
 

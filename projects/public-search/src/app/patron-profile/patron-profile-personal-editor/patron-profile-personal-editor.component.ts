@@ -28,8 +28,9 @@ import { Subscription, forkJoin, of } from 'rxjs';
 import { debounceTime, map, tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'public-search-patron-profile-personal-editor',
-  templateUrl: './patron-profile-personal-editor.component.html'
+    selector: 'public-search-patron-profile-personal-editor',
+    templateUrl: './patron-profile-personal-editor.component.html',
+    standalone: false
 })
 export class PatronProfilePersonalEditorComponent implements OnInit, OnDestroy {
 

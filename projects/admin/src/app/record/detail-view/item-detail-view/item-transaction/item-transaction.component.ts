@@ -24,8 +24,9 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'admin-item-transaction',
-  templateUrl: './item-transaction.component.html'
+    selector: 'admin-item-transaction',
+    templateUrl: './item-transaction.component.html',
+    standalone: false
 })
 export class ItemTransactionComponent implements OnInit, OnDestroy {
 

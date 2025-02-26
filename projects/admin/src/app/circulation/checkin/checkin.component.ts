@@ -31,8 +31,9 @@ import { PatronService } from '../../service/patron.service';
 import { CheckinActionComponent } from './checkin-action/checkin-action.component';
 
 @Component({
-  selector: 'admin-circulation-checkout',
-  templateUrl: './checkin.component.html'
+    selector: 'admin-circulation-checkout',
+    templateUrl: './checkin.component.html',
+    standalone: false
 })
 export class CheckinComponent implements OnInit {
 

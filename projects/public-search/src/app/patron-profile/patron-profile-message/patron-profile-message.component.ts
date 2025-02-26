@@ -21,15 +21,16 @@ import { PatronProfileMenuService } from '../patron-profile-menu.service';
 import { Message as PrimeMessage } from 'primeng/api';
 
 @Component({
-  selector: 'public-search-patron-profile-message',
-  template: `
+    selector: 'public-search-patron-profile-message',
+    template: `
       <p-messages
       [value]="messages"
       [closable]="false"
       [enableService]="false"
       showTransitionOptions="0ms"
     />
-  `
+  `,
+    standalone: false
 })
 export class PatronProfileMessageComponent implements OnInit, OnDestroy {
   private patronApiService: PatronApiService = inject(PatronApiService);

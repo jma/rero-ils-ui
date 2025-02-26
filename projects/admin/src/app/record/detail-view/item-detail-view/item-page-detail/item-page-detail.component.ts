@@ -24,8 +24,9 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Subscription, switchMap, tap } from 'rxjs';
 
 @Component({
-  selector: 'admin-item-page-detail',
-  templateUrl: './item-page-detail.component.html',
+    selector: 'admin-item-page-detail',
+    templateUrl: './item-page-detail.component.html',
+    standalone: false
 })
 export class ItemPageDetailComponent extends DetailComponent implements OnInit, OnDestroy {
   private operationLogsService: OperationLogsService = inject(OperationLogsService);

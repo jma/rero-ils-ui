@@ -32,8 +32,9 @@ import { DropdownChangeEvent } from 'primeng/dropdown';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'admin-account-transfer',
-  templateUrl: './account-transfer.component.html'
+    selector: 'admin-account-transfer',
+    templateUrl: './account-transfer.component.html',
+    standalone: false
 })
 export class AccountTransferComponent implements OnInit, OnDestroy {
   private acqAccountApiService: AcqAccountApiService = inject(AcqAccountApiService);

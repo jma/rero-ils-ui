@@ -22,8 +22,9 @@ import { catchError } from 'rxjs/operators';
 
 
 @Component({
-  selector: 'shared-thumbnail',
-  templateUrl: './thumbnail.component.html'
+    selector: 'shared-thumbnail',
+    templateUrl: './thumbnail.component.html',
+    standalone: false
 })
 export class ThumbnailComponent implements OnInit {
 

@@ -21,8 +21,8 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { CirculationLogsComponent } from './circulation-logs.component';
 
 @Component({
-  selector: 'admin-circulation-logs-dialog',
-  template: `
+    selector: 'admin-circulation-logs-dialog',
+    template: `
     <p-button
       icon="fa fa-history"
       id="{{ resourceType }}-circulation-history"
@@ -33,7 +33,8 @@ import { CirculationLogsComponent } from './circulation-logs.component';
       [operator] = permissionOperator.AND
       (onClick)="openDialog()"
     />
-  `
+  `,
+    standalone: false
 })
 export class CirculationLogsDialogComponent {
 

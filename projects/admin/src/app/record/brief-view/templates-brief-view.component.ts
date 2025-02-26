@@ -17,8 +17,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'admin-templates-brief-view',
-  template: `
+    selector: 'admin-templates-brief-view',
+    template: `
   <h5>
     <a [routerLink]="[detailUrl.link]">{{ record.metadata.name }} </a>
     @if (record.metadata.visibility === 'private') {
@@ -44,8 +44,9 @@ import { Component, Input } from '@angular/core';
         </li>
       }
     </ul>
-  `
-  })
+  `,
+    standalone: false
+})
 export class TemplatesBriefViewComponent {
 
   /** Record data */

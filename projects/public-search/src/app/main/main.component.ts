@@ -17,11 +17,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'public-search-main',
-  template: `
+    selector: 'public-search-main',
+    template: `
     <div class="mt-2 p-8 surface-ground">
         <h1 class="text-center" translate>Public search</h1>
     </div>
-`
+`,
+    standalone: false
 })
 export class MainComponent { }

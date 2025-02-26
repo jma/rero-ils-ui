@@ -20,8 +20,9 @@ import { DetailComponent } from '@rero/ng-core';
 import { Entity } from '@rero/shared';
 
 @Component({
-  selector: 'admin-local-page-detail',
-  templateUrl: './local-page-detail.component.html'
+    selector: 'admin-local-page-detail',
+    templateUrl: './local-page-detail.component.html',
+    standalone: false
 })
 export class LocalPageDetailComponent extends DetailComponent {
 

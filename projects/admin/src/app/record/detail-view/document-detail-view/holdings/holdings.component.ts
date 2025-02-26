@@ -24,8 +24,9 @@ import { IPermissions, PERMISSION_OPERATOR, PERMISSIONS, PermissionsService, Use
 import { forkJoin, Observable } from 'rxjs';
 
 @Component({
-  selector: 'admin-holdings',
-  templateUrl: './holdings.component.html'
+    selector: 'admin-holdings',
+    templateUrl: './holdings.component.html',
+    standalone: false
 })
 export class HoldingsComponent implements OnInit {
 

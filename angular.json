@@ -15,7 +15,7 @@
       "prefix": "admin",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "allowedCommonJsDependencies": [
               "crypto-js",
@@ -27,10 +27,13 @@
               "simple-isbn"
             ],
             "preserveSymlinks": true,
-            "outputPath": "build/dist/admin",
+            "outputPath": {
+              "base": "build/dist/admin"
+            },
             "index": "projects/admin/src/index.html",
-            "main": "projects/admin/src/main.ts",
-            "polyfills": "projects/admin/src/polyfills.ts",
+            "polyfills": [
+              "projects/admin/src/polyfills.ts"
+            ],
             "tsConfig": "projects/admin/tsconfig.app.json",
             "assets": [
               "projects/admin/src/assets",
@@ -44,12 +47,11 @@
               "projects/admin/src/app/scss/styles.scss"
             ],
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "projects/admin/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -64,8 +66,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "deployUrl": "/static/node_modules/@rero/rero-ils-ui/dist/admin/",
               "budgets": [
                 {
@@ -141,13 +141,16 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "allowedCommonJsDependencies": ["crypto-js", "easymde", "moment"],
-            "outputPath": "build/dist/public-holdings-items",
+            "outputPath": {
+              "base": "build/dist/public-holdings-items"
+            },
             "index": "projects/public-holdings-items/src/index.html",
-            "main": "projects/public-holdings-items/src/main.ts",
-            "polyfills": "projects/public-holdings-items/src/polyfills.ts",
+            "polyfills": [
+              "projects/public-holdings-items/src/polyfills.ts"
+            ],
             "tsConfig": "projects/public-holdings-items/tsconfig.app.json",
             "assets": [
               {
@@ -165,12 +168,11 @@
               "projects/public-search/src/app/scss/bootstrap_styles.scss"
             ],
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "projects/public-holdings-items/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -185,8 +187,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "styles": [
                 "projects/public-search/src/app/scss/styles.scss"
               ],
@@ -249,7 +249,7 @@
       "prefix": "public-search",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "allowedCommonJsDependencies": [
               "crypto-js",
@@ -258,10 +258,13 @@
               "zone.js"
             ],
             "preserveSymlinks": true,
-            "outputPath": "build/dist/public-search",
+            "outputPath": {
+              "base": "build/dist/public-search"
+            },
             "index": "projects/public-search/src/index.html",
-            "main": "projects/public-search/src/main.ts",
-            "polyfills": "projects/public-search/src/polyfills.ts",
+            "polyfills": [
+              "projects/public-search/src/polyfills.ts"
+            ],
             "tsConfig": "projects/public-search/tsconfig.app.json",
             "assets": [
               "projects/public-search/src/favicon.ico",
@@ -276,12 +279,11 @@
               "projects/public-search/src/app/scss/bootstrap_styles.scss"
             ],
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "projects/public-search/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -299,8 +301,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "deployUrl": "/static/node_modules/@rero/rero-ils-ui/dist/public-search/",
               "budgets": [
                 {
@@ -379,13 +379,16 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "allowedCommonJsDependencies": ["crypto-js", "easymde", "moment"],
-            "outputPath": "build/dist/search-bar",
+            "outputPath": {
+              "base": "build/dist/search-bar"
+            },
             "index": "projects/search-bar/src/index.html",
-            "main": "projects/search-bar/src/main.ts",
-            "polyfills": "projects/search-bar/src/polyfills.ts",
+            "polyfills": [
+              "projects/search-bar/src/polyfills.ts"
+            ],
             "tsConfig": "projects/search-bar/tsconfig.app.json",
             "assets": [
               {
@@ -403,12 +406,11 @@
               "projects/public-search/src/app/scss/bootstrap_styles.scss"
             ],
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "projects/search-bar/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -423,8 +425,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "styles": [
                 "projects/public-search/src/app/scss/styles.scss"
               ],
@@ -524,7 +524,7 @@
       "prefix": "public-patron-profile",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "baseHref": "/highlands/patrons/profile",
             "allowedCommonJsDependencies": [
@@ -534,10 +534,13 @@
               "zone.js"
             ],
             "preserveSymlinks": true,
-            "outputPath": "build/dist/public-patron-profile",
+            "outputPath": {
+              "base": "build/dist/public-patron-profile"
+            },
             "index": "projects/public-patron-profile/src/index.html",
-            "main": "projects/public-patron-profile/src/main.ts",
-            "polyfills": "projects/public-patron-profile/src/polyfills.ts",
+            "polyfills": [
+              "projects/public-patron-profile/src/polyfills.ts"
+            ],
             "tsConfig": "projects/public-patron-profile/tsconfig.app.json",
             "assets": [
               {
@@ -555,12 +558,11 @@
               "projects/public-search/src/app/scss/bootstrap_styles.scss"
             ],
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "projects/public-patron-profile/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -575,8 +577,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "styles": [
                 "projects/public-search/src/app/scss/styles.scss"
               ],

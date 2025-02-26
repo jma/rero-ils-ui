@@ -27,8 +27,9 @@ import { ItemRequestComponent } from '../item-request/item-request.component';
 import { AccordionTab } from 'primeng/accordion';
 
 @Component({
-  selector: 'admin-document-holding, [admin-document-holding]',
-  templateUrl: './holding.component.html'
+    selector: 'admin-document-holding, [admin-document-holding]',
+    templateUrl: './holding.component.html',
+    standalone: false
 })
 export class HoldingComponent implements OnInit, OnDestroy, AfterViewInit {
 

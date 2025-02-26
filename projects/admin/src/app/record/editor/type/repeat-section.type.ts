@@ -18,8 +18,8 @@ import { Component } from '@angular/core';
 import { FieldArrayType } from '@ngx-formly/core';
 
 @Component({
-  selector: 'admin-repeat-section',
-  template: `
+    selector: 'admin-repeat-section',
+    template: `
     @for (field of field.fieldGroup; track field; let i = $index) {
       <div class="grid">
         <div class="col-11">
@@ -47,5 +47,6 @@ import { FieldArrayType } from '@ngx-formly/core';
       </div>
     }
   `,
+    standalone: false
 })
 export class RepeatTypeComponent extends FieldArrayType { }

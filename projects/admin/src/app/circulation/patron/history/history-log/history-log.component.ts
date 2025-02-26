@@ -20,8 +20,9 @@ import { OperationLogsApiService } from '@app/admin/api/operation-logs-api.servi
 import { ProvisionActivityType } from '@rero/shared';
 
 @Component({
-  selector: 'admin-history-log',
-  templateUrl: './history-log.component.html'
+    selector: 'admin-history-log',
+    templateUrl: './history-log.component.html',
+    standalone: false
 })
 export class HistoryLogComponent {
 

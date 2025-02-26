@@ -37,8 +37,9 @@ import {
 import { OrderEmailFormComponent } from '../order-email-form/order-email-form.component';
 
 @Component({
-  selector: 'admin-acquisition-order-detail-view',
-  templateUrl: './order-detail-view.component.html',
+    selector: 'admin-acquisition-order-detail-view',
+    templateUrl: './order-detail-view.component.html',
+    standalone: false
 })
 export class OrderDetailViewComponent implements DetailRecord, OnInit, OnDestroy {
   private dialogService: DialogService = inject(DialogService);

@@ -24,9 +24,10 @@ import { CustomShortcutHelpComponent } from './widgets/custom-shortcut-help/cust
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'admin-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'admin-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class AppComponent implements OnInit, AfterViewInit {
 

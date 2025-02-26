@@ -21,8 +21,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { ResultItem } from '@rero/ng-core';
 
 @Component({
-  selector: 'admin-budgets-brief-view',
-  template: `
+    selector: 'admin-budgets-brief-view',
+    template: `
   <h5>
     <i
       class="fa fa-circle mr-2"
@@ -32,7 +32,8 @@ import { ResultItem } from '@rero/ng-core';
     <a [routerLink]="[detailUrl.link]">{{ record.metadata.name }}</a>
   </h5>
   `,
-  styles: []
+    styles: [],
+    standalone: false
 })
 export class BudgetsBriefViewComponent implements ResultItem {
 

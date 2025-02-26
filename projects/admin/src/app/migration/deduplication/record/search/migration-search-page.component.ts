@@ -19,13 +19,14 @@ import { Component } from '@angular/core';
 import { RecordSearchPageComponent } from '@rero/ng-core';
 
 @Component({
-  selector: 'admin-migration-search-page',
-  template: `
+    selector: 'admin-migration-search-page',
+    template: `
   <admin-migration-search [adminMode]="adminMode" [currentType]="currentType" [types]="types" [detailUrl]="detailUrl"
   [showSearchInput]="showSearchInput" [q]="q" [page]="page" [size]="size" [sort]="sort"
   (parametersChanged)="updateUrl($event)">
 </admin-migration-search>
   `,
+    standalone: false
 })
 export class MigrationSearchPageComponent extends RecordSearchPageComponent  {
 

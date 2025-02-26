@@ -25,8 +25,9 @@ import { CirculationLogsComponent } from '../../circulation-logs/circulation-log
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'admin-loans-brief-view',
-  templateUrl: './loans-brief-view.component.html'
+    selector: 'admin-loans-brief-view',
+    templateUrl: './loans-brief-view.component.html',
+    standalone: false
 })
 export class LoansBriefViewComponent implements ResultItem, OnInit {
 
