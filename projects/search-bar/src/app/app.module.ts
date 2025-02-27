@@ -22,37 +22,50 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader as BaseTranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { CoreConfigService, TranslateLoader } from '@rero/ng-core';
+import { CoreConfigService, primeNGConfig, TranslateLoader } from '@rero/ng-core';
 import { RemoteSearchComponent, SharedModule } from '@rero/shared';
 import { Observable } from 'rxjs';
 import { AppInitializerService } from './app-initializer.service';
 import { RouterModule } from '@angular/router';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
 
 /** function to instantiate the application  */
 export function appInitFactory(appInitializerService: AppInitializerService): () => Observable<any> {
   return () => appInitializerService.load();
 }
 
-@NgModule({ declarations: [], imports: [BrowserModule,
-        BrowserAnimationsModule,
-        RouterModule.forRoot([]),
-        ReactiveFormsModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: BaseTranslateLoader,
-                useClass: TranslateLoader,
-                deps: [CoreConfigService, HttpClient]
-            },
-            isolate: false
-        }),
-        SharedModule], providers: [
-        // TODO: remove this to avoid api call. It still needed because
-        //       `_getContributionName` need API config.
-        { provide: APP_INITIALIZER, useFactory: appInitFactory, deps: [AppInitializerService], multi: true },
-        provideHttpClient(withInterceptorsFromDi())
-    ] })
+@NgModule({
+  declarations: [],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot([]),
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: BaseTranslateLoader,
+        useClass: TranslateLoader,
+        deps: [CoreConfigService, HttpClient],
+      },
+      isolate: false,
+    }),
+    SharedModule,
+  ],
+  providers: [
+    // TODO: remove this to avoid api call. It still needed because
+    //       `_getContributionName` need API config.
+    {
+      provide: APP_INITIALIZER, useFactory: appInitFactory,
+      deps: [AppInitializerService],
+      multi: true
+    },
+    provideHttpClient(withInterceptorsFromDi()),
+    provideAnimationsAsync(),
+    providePrimeNG(primeNGConfig)
+  ],
+})
 export class AppModule implements DoBootstrap {
-
   private injector: Injector = inject(Injector);
 
   ngDoBootstrap(): void {

@@ -27,7 +27,7 @@ import { FormlyPrimeNGModule } from '@ngx-formly/primeng';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { TranslateLoader as BaseTranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { CoreConfigService, CoreModule, NgCoreTranslateService, RecordModule, TranslateLoader } from '@rero/ng-core';
+import { CoreConfigService, CoreModule, NgCoreTranslateService, primeNGConfig, RecordModule, TranslateLoader } from '@rero/ng-core';
 import { SharedModule } from '@rero/shared';
 import { AccordionModule } from 'primeng/accordion';
 import { DividerModule } from 'primeng/divider';
@@ -43,6 +43,8 @@ import { RequestComponent } from 'projects/public-search/src/app/document-detail
 import { Observable } from 'rxjs';
 import { AppConfigService } from './app-config-service.service';
 import { AppInitializerService } from './app-initializer.service';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
 
 /** function to instantiate the application  */
 export function appInitFactory(appInitializerService: AppInitializerService): () => Observable<any> {
@@ -86,6 +88,8 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
         { provide: APP_INITIALIZER, useFactory: appInitFactory, deps: [AppInitializerService], multi: true },
         { provide: CoreConfigService, useClass: AppConfigService },
         provideHttpClient(withInterceptorsFromDi()),
+        provideAnimationsAsync(),
+        providePrimeNG(primeNGConfig)
     ] })
 export class AppModule implements DoBootstrap {
   private injector: Injector = inject(Injector);

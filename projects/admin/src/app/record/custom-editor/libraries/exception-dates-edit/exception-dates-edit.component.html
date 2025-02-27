@@ -47,7 +47,7 @@
         {{ 'Date' | translate }}&nbsp;*
       </label>
       <div class="col-span-10">
-        <p-calendar appendTo="body" formControlName="date" [readonlyInput]="true" />
+        <p-datepicker appendTo="body" formControlName="date" [readonlyInput]="true" />
         @if (date.invalid && (date.dirty || date.touched)) {
           <div class="text-error">
             @if (date.errors.required) {
@@ -66,7 +66,7 @@
         {{ 'Dates' | translate }}&nbsp;*
       </label>
       <div class="col-span-10">
-        <p-calendar
+        <p-datepicker
           appendTo="body"
           formControlName="dates"
           selectionMode="range"
@@ -178,7 +178,7 @@
       }
     </div>
     <div class="col-span-2 flex gap-2 align-items-top">
-          <p-inputSwitch
+          <p-toggleswitch
             formControlName="repeat"
             id="repeat"
             (onChange)="onRepeatChange($event)"
@@ -190,7 +190,7 @@
         <label for="interval"><span translate>Repeat each</span>&nbsp;*</label>
         <div class="flex gap-2">
           <p-inputNumber [showButtons]="true"  min="1" step="1" formControlName="interval" />
-          <p-dropdown
+          <p-select
           styleClass="w-full"
           class="w-full"
           [options]="periods"

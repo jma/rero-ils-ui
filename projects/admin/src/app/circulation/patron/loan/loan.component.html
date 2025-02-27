@@ -44,7 +44,7 @@
     </div>
     <!-- Sorting loans -->
     <div class="col-span-6 flex items-start justify-end">
-      <p-dropdown
+      <p-select
         [options]="[
           {value:'-transactiondate', label:'Transaction date (desc)' | translate, icon:'fa fa-sort-numeric-desc'},
           {value:'transactiondate', label:'Transaction date' | translate, icon:'fa fa-sort-numeric-asc'},
@@ -67,7 +67,7 @@
             <div>{{ item.label }}</div>
           </div>
         </ng-template>
-      </p-dropdown>
+      </p-select>
     </div>
   </div>
   <admin-circulation-items-list

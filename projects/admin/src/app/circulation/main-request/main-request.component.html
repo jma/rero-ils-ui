@@ -29,12 +29,12 @@
     <!-- auto refresh -->
     <div class="flex gap-2 w-full items-center">
       <div class="flex grow gap-2 justify-start">
-        <p-inputSwitch id="auto-refresh" [ngModel]="refreshInterval > 0" (onChange)="enableAutoRefresh($event.checked)" />
+        <p-toggleswitch id="auto-refresh" [ngModel]="refreshInterval > 0" (onChange)="enableAutoRefresh($event.checked)" />
         <label for="auto-refresh" translate>Auto refresh</label>
       </div>
       <div class="flex gap-2 justify-end">
         @if (refreshInterval > 0) {
-          <p-dropdown [options]="refreshOptions" (onChange)="selectingIntervalTimer($event.value)">
+          <p-select [options]="refreshOptions" (onChange)="selectingIntervalTimer($event.value)">
             <ng-template let-item pTemplate="selectedItem">
               <div class="flex items-center gap-2">
                 <i [class]="item.icon"></i>
@@ -47,11 +47,11 @@
                 <div>{{ item.label }}</div>
               </div>
             </ng-template>
-          </p-dropdown>
+          </p-select>
 
         }
         <!-- Sorting loans -->
-        <p-dropdown [options]="sortingCriteria" (onChange)="selectingSortCriteria($event.value)">
+        <p-select [options]="sortingCriteria" (onChange)="selectingSortCriteria($event.value)">
           <ng-template let-item pTemplate="selectedItem">
             <div class="flex items-center gap-2">
               <i [class]="item.icon"></i>
@@ -64,7 +64,7 @@
               <div>{{ item.label }}</div>
             </div>
           </ng-template>
-        </p-dropdown>
+        </p-select>
       </div>
 
     </div>
@@ -72,7 +72,7 @@
 </div>
 
 <div class="grid grid-cols-12 gap-4">
-  <div class="col">
+  <div class="col-span-12">
     <admin-circulation-requested-items-list
       [items]="items"
       (requestValidated)="searchValueUpdated($event)"

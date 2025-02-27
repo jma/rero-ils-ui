@@ -23,7 +23,7 @@ import { SharedModule } from '@rero/shared';
 import { AccordionModule } from 'primeng/accordion';
 import { ButtonModule } from 'primeng/button';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
-import { InputSwitchModule } from 'primeng/inputswitch';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { MenuModule } from 'primeng/menu';
 import { MessagesModule } from 'primeng/messages';
 import { RippleModule } from 'primeng/ripple';
@@ -127,7 +127,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
         TabMenuModule,
         RippleModule,
         MessagesModule,
-        InputSwitchModule,
+        ToggleSwitchModule,
         SplitButtonModule,
         AccordionModule,
         ScrollPanelModule

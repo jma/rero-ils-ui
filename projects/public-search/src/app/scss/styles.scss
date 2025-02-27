@@ -21,13 +21,14 @@
 
 @plugin "tailwindcss-primeui";
 
+@layer theme, rero-ils-ui, primeng;
+
 @layer theme {
   @include meta.load-css('tailwindcss/theme');
 }
 
 @layer rero-ils-ui {
   .rero-ils-ui {
-    @layer base, utilities;
     @layer base {
       @include meta.load-css("tailwindcss/preflight.css");
     }
@@ -37,3 +38,4 @@
     @include meta.load-css("./styles-app.scss");
   }
 }
+

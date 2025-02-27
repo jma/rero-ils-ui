@@ -32,6 +32,7 @@ import {
   CoreConfigService,
   RecordHandleErrorService as CoreRecordHandleErrorService,
   NgCoreTranslateService,
+  primeNGConfig,
   RecordModule, RemoteAutocompleteService,
   TranslateLoader, TruncateTextPipe
 } from '@rero/ng-core';
@@ -194,7 +195,10 @@ import { HotkeysShortcutPipe } from '@ngneat/hotkeys';
 import { EntityAutocompleteComponent } from './record/editor/formly/primeng/entity-autocomplete/entity-autocomplete.component';
 import { RemoteAutocompleteService as UiRemoteAutocompleteService } from './record/editor/formly/primeng/remote-autocomplete/remote-autocomplete.service';
 import { CirculationLogsDialogComponent } from './record/circulation-logs/circulation-logs-dialog.component';
-
+import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
+import { providePrimeNG } from "primeng/config";
+import { definePreset } from "@primeng/themes";
+import Aura from '@primeng/themes/aura';
 /** Init application factory */
 export function appInitFactory(appInitializerService: AppInitializerService): () => Observable<any> {
   return () => appInitializerService.load();
@@ -422,5 +426,7 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
         { provide: CoreBucketNameService, useClass: BucketNameService },
         { provide: CoreRecordHandleErrorService, useClass: RecordHandleErrorService },
         provideHttpClient(withInterceptorsFromDi()),
+        provideAnimationsAsync(),
+        providePrimeNG(primeNGConfig)
     ] })
 export class AppModule {}

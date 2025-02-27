@@ -36,6 +36,7 @@ import { MigrationSearchPageComponent } from './deduplication/record/search/migr
 import { MigrationSearchComponent } from './deduplication/record/search/migration-search/migration-search.component';
 import { MigrationRoutingModule } from './migration-routing.module';
 import { MigrationDetailComponent } from './record/brief-view/migration/migration.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { MigrationDetailComponent } from './record/brief-view/migration/migratio
   ],
   imports: [
     MigrationRoutingModule,
+    FormsModule,
     BadgeModule,
     SharedModule,
     RecordModule,

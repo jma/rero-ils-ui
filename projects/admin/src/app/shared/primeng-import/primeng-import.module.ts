@@ -20,15 +20,14 @@ import { NgModule } from '@angular/core';
 import { NgCoreFormlyRemoteAutocompleteModule } from '@rero/ng-core';
 import { AccordionModule } from 'primeng/accordion';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-import { ChipsModule } from 'primeng/chips';
 import { ChipModule } from 'primeng/chip';
 import { DividerModule } from 'primeng/divider';
 import { DragDropModule } from 'primeng/dragdrop';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { InputSwitchModule } from 'primeng/inputswitch';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessagesModule } from 'primeng/messages';
 import { PanelModule } from 'primeng/panel';
@@ -44,20 +43,19 @@ import { ChartModule } from 'primeng/chart';
 import { AvatarModule } from 'primeng/avatar';
 import { TreeModule } from 'primeng/tree';
 import { TreeTableModule } from 'primeng/treetable';
-
+import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
   exports: [
     AutoCompleteModule,
     AccordionModule,
     AvatarModule,
-    ChipsModule,
     ChipModule,
     DividerModule,
     DragDropModule,
-    DropdownModule,
+    SelectModule,
     InputNumberModule,
-    InputSwitchModule,
+    ToggleSwitchModule,
     InputTextModule,
     InputGroupAddonModule,
     InputGroupModule,
@@ -68,6 +66,7 @@ import { TreeTableModule } from 'primeng/treetable';
     NgCoreFormlyRemoteAutocompleteModule,
     RadioButtonModule,
     MessagesModule,
+    RippleModule,
     TabViewModule,
     CardModule,
     TableModule,

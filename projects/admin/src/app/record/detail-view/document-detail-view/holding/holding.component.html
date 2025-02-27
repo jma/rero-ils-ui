@@ -98,7 +98,7 @@
         @case ('electronic') {
           <div class="row">
             @for (elocation of holding.metadata.electronic_location; track elocation) {
-              <div class="col">
+              <div class="col-span-12">
                 <a class="rero-ils-external-link" [href]="elocation.uri | safeUrl">{{ elocation.source }}</a>
               </div>
             }

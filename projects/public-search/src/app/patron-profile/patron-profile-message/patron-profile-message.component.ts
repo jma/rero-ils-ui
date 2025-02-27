@@ -18,7 +18,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PatronApiService, Message } from '../../api/patron-api.service';
 import { PatronProfileMenuService } from '../patron-profile-menu.service';
-import { Message as PrimeMessage } from 'primeng/api';
+import { ToastMessageOptions } from 'primeng/api/toastmessage';
 
 @Component({
     selector: 'public-search-patron-profile-message',
@@ -40,7 +40,7 @@ export class PatronProfileMessageComponent implements OnInit, OnDestroy {
   private _subscription = new Subscription();
 
   /** patron messages */
-  messages: PrimeMessage[] = [];
+  messages: ToastMessageOptions[] = [];
 
   /** OnInit hook */
   ngOnInit(): void {
@@ -62,8 +62,8 @@ export class PatronProfileMessageComponent implements OnInit, OnDestroy {
     const patronPid = this.patronProfileMenuService.currentPatron.pid;
     this.patronApiService.getMessages(patronPid).subscribe(
       (messages: Message[]) =>
-        (this.messages = messages.map((message:Message): PrimeMessage => {
-          return { detail: message.content, severity: message.type };
+        (this.messages = messages.map((message:Message): ToastMessageOptions => {
+          return { text: message.content, severity: message.type };
         }))
     );
   }

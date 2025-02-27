@@ -27,7 +27,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { TranslateService } from '@ngx-translate/core';
 import { MenuItem } from 'primeng/api';
 import { CurrencyPipe } from '@angular/common';
-import { DropdownChangeEvent } from 'primeng/dropdown';
+import { SelectChangeEvent } from 'primeng/select';
 
 
 @Component({
@@ -110,7 +110,7 @@ export class PatronTransactionComponent implements OnInit {
       : false;
   }
 
-  patronTransactionEvent(event: DropdownChangeEvent): void {
+  patronTransactionEvent(event: SelectChangeEvent): void {
     event.value.command();
     this.menuSelectedAction = {};
   }

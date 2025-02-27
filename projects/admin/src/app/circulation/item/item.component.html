@@ -288,7 +288,7 @@
       }
     </div>
     @if (debugMode && !isCollapsed) {
-      <div class="col">
+      <div class="col-span-12">
         <h5 class="text-error"><i class="fa fa-bug"></i>&nbsp;{{ 'Debug' | translate }}</h5>
         <div class="grid grid-cols-12 gap-4">
           @if (loan) {
@@ -316,7 +316,7 @@
               }
             </div>
           } @else {
-            <div class="col">
+            <div class="col-span-12">
               <div class="flex flex-col border border-surface rounded-border p-2 bg-white">
                 <h5 translate>Item</h5>
                 <p-scrollPanel styleClass="w-full" [style]="{ height: '500px' }">

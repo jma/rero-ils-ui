@@ -66,7 +66,7 @@
               }
               @if (record.metadata.limits.checkout_limits.library_exceptions) {
                 <dt translate>Exceptions</dt>
-                <dd class="col">
+                <dd class="col-span-12">
                   <ul class="list-none m-0 p-0">
                     @for (exception of record.metadata.limits.checkout_limits.library_exceptions; track exception) {
                       <li class="grid grid-cols-12 gap-4 grid-nogutter">

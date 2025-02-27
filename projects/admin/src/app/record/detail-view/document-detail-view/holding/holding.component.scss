@@ -17,7 +17,7 @@
 
 admin-document-holding, [admin-document-holding] {
   .p-accordion-header {
-    @extend .surface-100;
+    background-color: var(--p-surface-100);
     a.p-accordion-header-link {
       background: none;
     }

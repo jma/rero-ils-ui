@@ -57,7 +57,15 @@
           {{ ('email_' + type) | translate }}&nbsp;:
         </div>
         <div class="col-span-10">
-          <p-chips class="p-fluid" [inputId]="type" pDroppable="emails" (onDrop)="drop($event)" [(ngModel)]="recipients[type]" [addOnBlur]="true" />
+          <p-autocomplete
+            multiple
+            [typeahead]="false"
+            class="p-fluid"
+            [inputId]="type"
+            pDroppable="emails"
+            (onDrop)="drop($event)"
+            [(ngModel)]="recipients[type]"
+          />
         </div>
       }
     </div>

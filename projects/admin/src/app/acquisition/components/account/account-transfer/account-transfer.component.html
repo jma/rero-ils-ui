@@ -20,7 +20,7 @@
   <div class="flex flex-wrap gap-2 justify-between">
     <h1 translate>Fund transfer</h1>
     @if (budgets.length > 1) {
-      <p-dropdown
+      <p-select
         (onChange)="selectBudget($event)"
         [ngModel]="selectedBudget"
         [options]="budgets"
@@ -33,7 +33,7 @@
         <ng-template let-budget pTemplate="item">
           {{ budget.code | getRecord : "budgets" : "field" : "name" | async }}
         </ng-template>
-      </p-dropdown>
+      </p-select>
     }
   </div>
   <form [formGroup]="form" (ngSubmit)="submit()">

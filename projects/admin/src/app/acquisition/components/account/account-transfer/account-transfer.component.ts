@@ -28,7 +28,7 @@ import { MessageService } from 'primeng/api';
 import { AcqAccountApiService } from '../../../api/acq-account-api.service';
 import { IAcqAccount } from '../../../classes/account';
 import { orderAccountsAsTree } from '../../../utils/account';
-import { DropdownChangeEvent } from 'primeng/dropdown';
+import { SelectChangeEvent } from 'primeng/select';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -98,7 +98,7 @@ export class AccountTransferComponent implements OnInit, OnDestroy {
 
   // PUBLIC FUNCTIONS =========================================================
   /** Handle event when a budget is selected */
-  selectBudget(event: DropdownChangeEvent): void {
+  selectBudget(event: SelectChangeEvent): void {
     this.selectedBudget = event.value;
     this._filterAccountToDisplay();
   }

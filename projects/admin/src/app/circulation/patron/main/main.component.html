@@ -23,7 +23,7 @@
   />
   <p-tabMenu [model]="items" [activeItem]="activeItem" (activeItemChange)="onActiveItemChange($event)">
     <ng-template pTemplate="item" let-item>
-      <a pRipple class="p-menuitem-link flex gap-2">
+      <a pRipple class="p-menu-item-link flex gap-2">
         <span>{{ item.label }}</span>
         @if (item.tag?.statistics && item.tag?.statistics()[item.id] && item.tag?.statistics()[item.id] > 0) {
           @if (item.tag.withCurrency) {

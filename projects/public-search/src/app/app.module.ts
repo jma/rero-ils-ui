@@ -14,20 +14,18 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
-import { providePrimeNG } from "primeng/config";
-import { definePreset } from "@primeng/themes";
-import Aura from '@primeng/themes/aura';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { APP_INITIALIZER, ApplicationRef, CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, inject, Injector, LOCALE_ID, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { TranslateLoader as BaseTranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { BucketNameService as CoreBucketNameService, CoreConfigService, NgCoreTranslateService, RecordModule, TranslateLoader } from '@rero/ng-core';
+import { BucketNameService as CoreBucketNameService, CoreConfigService, NgCoreTranslateService, primeNGConfig, RecordModule, TranslateLoader } from '@rero/ng-core';
 import { RemoteSearchComponent, SharedModule, UserService } from '@rero/shared';
+import { providePrimeNG } from "primeng/config";
 import { DividerModule } from 'primeng/divider';
 import { Observable } from 'rxjs';
 import { AppConfigService } from './app-config.service';
@@ -82,42 +80,7 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
         { provide: HTTP_INTERCEPTORS, useClass: CustomRequestInterceptor, multi: true },
         { provide: CoreBucketNameService, useClass: BucketNameService },
         provideAnimationsAsync(),
-        providePrimeNG({
-            theme: {
-                options: {
-                  cssLayer: {
-                    name: 'primeng',
-                    // order: 'bootstrap, base, components, primeng, utilities'
-                  }
-                },
-                preset: definePreset(Aura, {
-                  semantic: {
-                    primary: {
-                      50: '{blue.50}',
-                      100: '{blue.100}',
-                      200: '{blue.200}',
-                      300: '{blue.300}',
-                      400: '{blue.400}',
-                      500: '{blue.500}',
-                      600: '{blue.600}',
-                      700: '{blue.700}',
-                      800: '{blue.800}',
-                      900: '{blue.900}',
-                      950: '{blue.950}'
-                    }
-                  },
-                  components: {
-                    fieldset: {
-                      legend: {
-                        padding: '0 0.25rem 0.25rem 0.25rem'
-                      }
-                    }
-                  }
-                }
-              )
-            }
-          }
-        )
+        providePrimeNG(primeNGConfig)
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

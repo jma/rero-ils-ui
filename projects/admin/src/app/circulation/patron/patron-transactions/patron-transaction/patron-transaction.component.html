@@ -30,9 +30,9 @@
         }
       </div>
       <div class="col-span-2 flex justify-end">{{ transactionAmount | currency: organisation.default_currency }}</div>
-      <div class="col-span-2 flex justify-end" dropdown>
+      <div class="col-span-2 flex justify-end">
         @if (transaction.status === patronTransactionStatus.OPEN) {
-          <p-dropdown
+          <p-select
             [placeholder]="'Action'|translate"
             [options]="menuItems"
             [(ngModel)]="menuSelectedAction"

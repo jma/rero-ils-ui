@@ -35,7 +35,7 @@
       <!-- REQUESTS -->
       @if (type === 'loan_request' && pickupLocations && pickupLocations.length > 0) {
         @if (canUpdateRequestPickupLocation()) {
-          <p-dropdown
+          <p-select
           class="col-span-4"
           optionLabel="label"
           [options]="pickupLocations"

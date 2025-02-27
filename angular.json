@@ -22,8 +22,6 @@
               "easymde",
               "issn",
               "js-generate-password",
-              "moment",
-              "rfdc",
               "simple-isbn"
             ],
             "preserveSymlinks": true,
@@ -66,7 +64,7 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "deployUrl": "/static/node_modules/@rero/rero-ils-ui/dist/admin/",
+              "deployUrl": "/static/node_modules/@rero/rero-ils-ui/dist/admin/browser/",
               "budgets": [
                 {
                   "type": "initial",
@@ -143,7 +141,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "allowedCommonJsDependencies": ["crypto-js", "easymde", "moment"],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "easymde",
+              "issn",
+              "js-generate-password",
+              "simple-isbn"
+            ],
             "outputPath": {
               "base": "build/dist/public-holdings-items"
             },
@@ -187,6 +191,7 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
+              "deployUrl": "/static/node_modules/@rero/rero-ils-ui/dist/public-holdings-item/browser/",
               "styles": [
                 "projects/public-search/src/app/scss/styles.scss"
               ],
@@ -254,8 +259,9 @@
             "allowedCommonJsDependencies": [
               "crypto-js",
               "easymde",
-              "moment",
-              "zone.js"
+              "issn",
+              "js-generate-password",
+              "simple-isbn"
             ],
             "preserveSymlinks": true,
             "outputPath": {
@@ -301,7 +307,7 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "deployUrl": "/static/node_modules/@rero/rero-ils-ui/dist/public-search/",
+              "deployUrl": "/static/node_modules/@rero/rero-ils-ui/dist/public-search/browser/",
               "budgets": [
                 {
                   "type": "initial",
@@ -381,7 +387,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "allowedCommonJsDependencies": ["crypto-js", "easymde", "moment"],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "easymde",
+              "issn",
+              "js-generate-password",
+              "simple-isbn"
+            ],
             "outputPath": {
               "base": "build/dist/search-bar"
             },
@@ -530,8 +542,9 @@
             "allowedCommonJsDependencies": [
               "crypto-js",
               "easymde",
-              "moment",
-              "zone.js"
+              "issn",
+              "js-generate-password",
+              "simple-isbn"
             ],
             "preserveSymlinks": true,
             "outputPath": {
@@ -580,7 +593,7 @@
               "styles": [
                 "projects/public-search/src/app/scss/styles.scss"
               ],
-              "deployUrl": "/static/node_modules/@rero/rero-ils-ui/dist/public-patron-profile/",
+              "deployUrl": "/static/node_modules/@rero/rero-ils-ui/dist/public-patron-profile/browser/",
               "baseHref": "",
               "budgets": [
                 {

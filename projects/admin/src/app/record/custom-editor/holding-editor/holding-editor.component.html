@@ -19,7 +19,7 @@
   <div class="md:col-span-9 col-span-8">
     <ng-core-editor [model]="model" (modelChange)="modelChanged($event)" (canDeactivateChange)="canDeactivateChanged($event)"></ng-core-editor>
   </div>
-  <div class="col">
+  <div class="col-span-12">
     <p-fieldset [legend]="'Predictions' | translate">
       @if (!serialPreviewError) {
         @if (serialPreviewExamples && serialPreviewExamples.length > 0) {

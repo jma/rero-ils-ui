@@ -29,11 +29,11 @@ import { Observable, Subscription } from 'rxjs';
     @if (!field.formControl.value) {
       @if (props.filters?.options) {
         <div class="flex">
-          <p-dropdown
+          <p-select
             [options]="props.filters.options"
             [ngModel]="props.filters.selected"
             (onChange)="changeFilter($event)"
-          ></p-dropdown>
+          ></p-select>
         </div>
       }
       <div class="flex ml-1 w-full">

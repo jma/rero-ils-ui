@@ -37,7 +37,6 @@ import { Component, Input } from '@angular/core';
       </dd>
     </dl>
   `,
-    styleUrls: ['./day-opening-hours.component.scss'],
     standalone: false
 })
 export class DayOpeningHoursComponent {
