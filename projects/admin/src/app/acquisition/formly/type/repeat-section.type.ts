@@ -21,7 +21,7 @@ import { FieldArrayType } from '@ngx-formly/core';
     selector: 'admin-formly-repeat-section',
     template: `
     <p-panel styleClass="mb-2">
-      <ng-template pTemplate="header">
+      <ng-template #header>
         @if (field.props.label || field.props.addButton) {
             <label class="flex items-center" [ngClass]="field.props.className">
               @if (field.props.label) {

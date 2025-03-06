@@ -126,6 +126,7 @@ export class LibraryComponent extends AbstractCanDeactivateComponent implements 
     this.dynamicDialogRef = this.dialogService.open(ExceptionDatesEditComponent, {
       header: this.translateService.instant('Exception'),
       width: '50vw',
+      closable: true,
       data: {
         exceptionDate: null
       }

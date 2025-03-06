@@ -51,7 +51,7 @@ import { Observable, Subscription } from 'rxjs';
           (completeMethod)="search($event)"
           (onSelect)="onSelect($event)"
         >
-          <ng-template let-data pTemplate="group">
+          <ng-template #group let-data>
             <span class="font-bold">
               @if (data.label === 'local' && isAuthorizedToAddLocalEntity) {
                 {{ "link to local authority" | translate }}
@@ -66,7 +66,7 @@ import { Observable, Subscription } from 'rxjs';
               }
             </span>
           </ng-template>
-          <ng-template let-data pTemplate="item">
+          <ng-template let-data #item>
             <div class="flex">
               <div class="flex" [innerHTML]="data.label"></div>
               @if (data.link) {
@@ -115,6 +115,7 @@ export class EntityAutocompleteComponent extends RemoteAutocomplete implements O
     const dialog: DynamicDialogRef = this.dialogService.open(AddEntityLocalFormComponent, {
       header: this.translateService.instant('Add local entity'),
       width: '75vw',
+      closable: true,
       modal: true,
       data: {
         selectedType: this.props.queryOptions.filter,

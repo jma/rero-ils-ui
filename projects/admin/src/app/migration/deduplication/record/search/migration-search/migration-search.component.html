@@ -1,6 +1,6 @@
 <!--
   RERO angular core
-  Copyright (C) 2019-2024 RERO
+  Copyright (C) 2019-2025 RERO
   Copyright (C) 2019-2023 UCLouvain
 
   This program is free software: you can redistribute it and/or modify
@@ -39,11 +39,11 @@
       <ng-content select="[afterInputSearch]"/>
     </div>
     @if (loaded && hasNoRecord) {
-      <p-messages
+      <p-message
         class="my-6"
-        [value]="[{ severity: 'info', detail: emptyRecordMessage }]"
-        [enableService]="false"
-        [closable]="false"
+        [text]="emptyRecordMessage"
+        severity="info"
+        showTransitionOptions="0ms"
       />
       @if (adminMode.can && addStatus.can) {
       <p-button
@@ -129,15 +129,15 @@
       }
       <div id="recordlist" class="md:col-span-7 lg:col-span-9 col-span-12">
         @if (showEmptySearchMessage) {
-        <p-messages
-          [value]="[{ severity: 'info', detail: 'Enter a query to get results.' | translate }]"
-          [enableService]="false"
-          [closable]="false"
-        />
+          <p-message
+            [text]="'Enter a query to get results.'|translate"
+            severity="info"
+            showTransitionOptions="0ms"
+          />
         }
         <ng-content select="[top-result]"/>
-        <p-dataView [value]="records" [emptyMessage]="' '">
-          <ng-template pTemplate="list" let-records>
+        <p-dataview [value]="records" [emptyMessage]="' '">
+          <ng-template #list let-records>
             <ul class="p-0 m-0">
               @for (record of records; track record ; let first = $first) {
               <li class="list-none py-2" [ngClass]="{ 'border-top-1 surface-border': !first }">
@@ -149,7 +149,7 @@
               }
             </ul>
           </ng-template>
-        </p-dataView>
+        </p-dataview>
 
         <ng-core-paginator
           [alwaysShow]="showPagination"

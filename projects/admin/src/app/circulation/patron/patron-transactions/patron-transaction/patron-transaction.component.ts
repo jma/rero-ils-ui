@@ -124,6 +124,7 @@ export class PatronTransactionComponent implements OnInit {
     this.dialogService.open(PatronTransactionEventFormComponent, {
       header: this.translateService.instant(action),
       focusOnShow: false,
+      closable: true,
       width: '40vw',
       data: {
         action,

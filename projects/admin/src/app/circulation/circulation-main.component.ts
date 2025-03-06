@@ -21,7 +21,7 @@ import { Component } from '@angular/core';
     template: `
     <router-outlet></router-outlet>
     <p-toast>
-      <ng-template let-message pTemplate="message">
+      <ng-template #message let-message>
         <div class="flex flex-col items-start grow">
           <div class="font-medium text-lg text-surface-900 dark:text-surface-0">
             {{ message.summary }}

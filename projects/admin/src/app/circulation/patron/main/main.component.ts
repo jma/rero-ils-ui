@@ -102,7 +102,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   items: MenuItem[] | undefined;
 
-  activeItem: MenuItem | undefined;
+  activeTab: string;
 
   subscription = new Subscription();
 
@@ -296,7 +296,6 @@ export class MainComponent implements OnInit, OnDestroy {
     }
 
     // Active the active tab
-    const index = this.items.findIndex((item) => item.id === this.router.url.split('/').pop());
-    this.activeItem = this.items[index];
+    this.activeTab = this.router.url.split('/').pop();
   }
 }

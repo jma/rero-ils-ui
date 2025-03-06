@@ -21,6 +21,7 @@ import { RecordPermissionService } from '@app/admin/service/record-permission.se
 import { TranslateService } from '@ngx-translate/core';
 import { RecordUiService } from '@rero/ng-core';
 import { IPermissions, PERMISSION_OPERATOR, PERMISSIONS, PermissionsService, UserService } from '@rero/shared';
+import { AccordionTabOpenEvent } from 'primeng/accordion';
 import { forkJoin, Observable } from 'rxjs';
 
 @Component({
@@ -129,6 +130,11 @@ export class HoldingsComponent implements OnInit {
         this.holdingsTotal = count;
       });
     }
+  }
+
+  onOpen(event:  AccordionTabOpenEvent): void {
+    // TODO: Bug on event: https://github.com/primefaces/primeng/issues/17770
+    console.log(event);
   }
 
   // COMPONENT FUNCTIONS ======================================================

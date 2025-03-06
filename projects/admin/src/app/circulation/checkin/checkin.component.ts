@@ -237,6 +237,7 @@ export class CheckinComponent implements OnInit {
           const ref: DynamicDialogRef = this.dialogService.open(CheckinActionComponent, {
             header: this.translate.instant('Circulation action'),
             focusOnShow: false,
+            closable: true,
             width: '25vw',
           })
           ref.onClose.subscribe((action: string) => {

@@ -147,6 +147,7 @@ export class OrderDetailViewComponent implements DetailRecord, OnInit, OnDestroy
       header: this.translateService.instant('Place order'),
       width: '60vw',
       dismissableMask: true,
+      closable: true,
       data: {
         order: this.order,
       },

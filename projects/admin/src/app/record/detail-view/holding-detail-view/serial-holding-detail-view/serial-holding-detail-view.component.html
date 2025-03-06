@@ -36,14 +36,13 @@
 <!-- TABS ================================================================= -->
 <!--    3 tabs will be displayed : Issues, Holdings details, Local fields -->
 
-
+<!--
 <p-tabView>
   <p-tabPanel>
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <i class="fa fa-list-ul"></i>&nbsp;{{ 'Issues' | translate }}
     </ng-template>
     <div class="flex flex-col gap-2">
-      <!-- top actions bar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
       <div class="flex">
         <p-button
           class="grow"
@@ -67,7 +66,6 @@
         }
       </div>
       <div class="flex flex-col">
-        <!-- expected issues ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         @for (prediction of predictionsItems; track prediction; let last = $last) {
           <admin-expected-issue [issue]="prediction">
             @if (last) {
@@ -101,12 +99,10 @@
             }
           </admin-expected-issue>
         }
-        <!-- received issues ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         @for (item of receivedItems; track item; let last = $last) {
           <admin-received-issue [issue]="item" [holding]="holding" (delete)="deleteIssue($event)" />
         }
       </div>
-      <!-- SHOW MORE RECEIVED ISSUE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
       @if (receivedItems.length < totalReceivedItems) {
         <div class="flex items-center gap-2">
         <p-button
@@ -123,17 +119,18 @@
   </p-tabPanel>
 
   <p-tabPanel>
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <i class="fa fa-list-ul"></i>&nbsp;<span translate>Details</span>
     </ng-template>
     <admin-holding-detail context="holdings" [holding]="holding"></admin-holding-detail>
   </p-tabPanel>
 
   <p-tabPanel>
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <i class="fa fa-list-ul"></i>&nbsp;<span translate>Local fields</span>
     </ng-template>
     <admin-local-field [resourceType]="'holdings'" [resourcePid]="holding.metadata.pid"></admin-local-field>
   </p-tabPanel>
 
 </p-tabView>
+-->

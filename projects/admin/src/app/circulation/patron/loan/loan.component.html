@@ -55,13 +55,13 @@
         ]"
         (onChange)="selectingSortCriteria($event)"
       >
-        <ng-template let-item pTemplate="selectedItem">
+        <ng-template #selectedItem let-item>
           <div class="flex items-center gap-2">
             <i [class]="item.icon"></i>
             <div>{{ item.label }}</div>
           </div>
         </ng-template>
-        <ng-template let-item pTemplate="item">
+        <ng-template #item let-item>
           <div class="flex items-center gap-2">
             <i [class]="item.icon"></i>
             <div>{{ item.label }}</div>

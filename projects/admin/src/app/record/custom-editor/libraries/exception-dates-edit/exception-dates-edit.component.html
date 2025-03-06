@@ -26,20 +26,20 @@
         pInputText
         formControlName="title"
         placeholder="{{ 'Please insert a title' | translate }}"
-        />
-        @if (title.invalid && (title.dirty || title.touched)) {
-          <div class="text-error">
-            @if (title.errors.required) {
-              <div translate>Title is required.</div>
-            }
-          </div>
-        }
+      />
+      @if (title.invalid && (title.dirty || title.touched)) {
+        <div class="text-error">
+          @if (title.errors.required) {
+            <div translate>Title is required.</div>
+          }
+        </div>
+      }
     </div>
-    <div class="col-start-3 col-span-10">
-          <input type="radio" name="day" value="false" [checked]="is_period.value === false" (change)="onPeriodChange($event)" />
-          &nbsp;{{ 'Day' | translate }}
-          <input type="radio" name="period" value="true" [checked]="is_period.value === true" (change)="onPeriodChange($event)" />
-          &nbsp;{{ 'Period' | translate }}
+    <div class="row-start-3 col-span-10">
+      <input type="radio" name="day" value="false" [checked]="is_period.value === false" (change)="onPeriodChange($event)" />
+      &nbsp;{{ 'Day' | translate }}
+      <input type="radio" name="period" value="true" [checked]="is_period.value === true" (change)="onPeriodChange($event)" />
+      &nbsp;{{ 'Period' | translate }}
     </div>
     <!-- one Date -->
     @if (!is_period.value) {
@@ -86,7 +86,7 @@
       </div>
   }
   <!-- open/close + times -->
-  <div class="col-start-3 col-span-10">
+  <div class="row-start-3 col-span-10">
     <input type="radio" class="form-check-input" name="date-status" value="false" [checked]="is_open.value === false" (change)="onDateStatusChange($event)" />
     &nbsp;{{ 'Closed' | translate }}
     <input type="radio" class="form-check-input" name="date-status" value="true" [checked]="is_open.value === true" (change)="onDateStatusChange($event)"/>
@@ -98,7 +98,7 @@
       <em class="block mt-2" translate>Change the default closing hours for this day</em>
     }
   </div>
-    <div class="col-start-3 col-span-10">
+    <div class="row-start-3 col-span-10">
       @if (times.length === 0) {
         <p-button
           (onClick)="addTime()"
@@ -108,7 +108,7 @@
           [label]="'period' | translate"
         />
       }
-      <ul class="list-none m-0 p-0">
+      <ul class="list-none">
         @for (time of times.controls; track time; let t=$index) {
           <li formArrayName="times">
             <div [formGroupName]="t">

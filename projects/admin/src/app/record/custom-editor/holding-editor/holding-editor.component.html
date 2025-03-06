@@ -35,19 +35,16 @@
             }
           </ul>
         } @else {
-          <p-messages
-            [value]="[{ severity: 'info', detail: 'No preview available' | translate }]"
-            [closable]="false"
-            [enableService]="false"
+          <p-message
+            [text]="'No preview available' | translate"
+            severity="info"
             showTransitionOptions="0ms"
           />
         }
-
       } @else {
-        <p-messages
-          [value]="[{ severity: 'error', detail: ('Template' | translate) + '&nbsp;' + serialPreviewError.status }]"
-          [closable]="false"
-          [enableService]="false"
+        <p-message
+          [text]="('Template' | translate) + '&nbsp;' + serialPreviewError.status"
+          severity="error"
           showTransitionOptions="0ms"
         />
       }

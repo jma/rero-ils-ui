@@ -47,7 +47,7 @@
         <h2 translate>Limits</h2>
         <!-- Checkout limits -->
         <p-panel [collapsed]="!record?.metadata?.limits?.checkout_limits">
-          <ng-template pTemplate="header">
+          <ng-template #header>
             <div class="flex items-center gap-2 px-2">
               <i class="fa" [ngClass]="{
                 'fa-circle text-success': record.metadata.limits.checkout_limits,
@@ -67,7 +67,7 @@
               @if (record.metadata.limits.checkout_limits.library_exceptions) {
                 <dt translate>Exceptions</dt>
                 <dd class="col-span-12">
-                  <ul class="list-none m-0 p-0">
+                  <ul class="list-none">
                     @for (exception of record.metadata.limits.checkout_limits.library_exceptions; track exception) {
                       <li class="grid grid-cols-12 gap-4 grid-nogutter">
                         <div class="col-span-10">
@@ -85,7 +85,7 @@
         </p-panel>
 
         <p-panel [collapsed]="!record?.metadata?.limits?.fee_amount_limits">
-          <ng-template pTemplate="header">
+          <ng-template #header>
             <div class="flex items-center gap-2 px-2">
               <i class="fa" [ngClass]="{
                 'fa-circle text-success': record.metadata.limits.fee_amount_limits,
@@ -103,7 +103,7 @@
         </p-panel>
 
         <p-panel [collapsed]="!record?.metadata?.limits?.overdue_items_limits">
-          <ng-template pTemplate="header">
+          <ng-template #header>
             <div class="flex items-center gap-2 px-2">
               <i class="fa" [ngClass]="{
                 'fa-circle text-success': record.metadata.limits.overdue_items_limits,
@@ -121,7 +121,7 @@
         </p-panel>
 
         <p-panel collapsed>
-          <ng-template pTemplate="header">
+          <ng-template #header>
             <div class="flex items-center gap-2 px-2">
               <i class="fa" [ngClass]="{
                 'fa-circle text-success': record.metadata.limits.unpaid_subscription,

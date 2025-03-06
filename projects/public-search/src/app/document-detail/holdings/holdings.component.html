@@ -17,15 +17,9 @@
 
 @if (holdings.length > 0) {
   @if (!user.roles.includes('patron')) {
-    <p-messages
-      [value]="[
-        {
-          severity: 'warn',
-          detail: 'Log in to see request options' | translate
-        }
-      ]"
-      [closable]="false"
-      [enableService]="false"
+    <p-message
+      [text]="'Log in to see request options' | translate"
+      severity="warn"
       showTransitionOptions="0ms"
     />
   }

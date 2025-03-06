@@ -1,6 +1,6 @@
  <!--
   RERO ILS UI
-  Copyright (C) 2021-2024 RERO
+  Copyright (C) 2021-2025 RERO
   Copyright (C) 2021 UCLouvain
 
   This program is free software: you can redistribute it and/or modify
@@ -19,11 +19,11 @@
   <article class="grid grid-cols-12 gap-4 align-items-top">
     <div class="col-span-12 lg:col-span-9">
       <h5><a [routerLink]="[detailUrl.link]">{{ order.reference }}</a></h5>
-      <ng-container *ngVar="order.notes | notesFilter: [noteType.STAFF_NOTE] as notes">
-        @if (notes.length > 0) {
-          <div class="italic" [innerHTML]="notes[0].content | nl2br"></div>
-        }
-      </ng-container>
+      <!-- @let notes = order.notes | notesFilter: [noteType.STAFF_NOTE]; -->
+      @let notes = [];
+      @if (notes.length > 0) {
+        <div class="italic" [innerHTML]="notes[0].content | nl2br"></div>
+      }
       <span class="font-bold text-muted-color text-sm">
         [
         {{ order.status | translate }}

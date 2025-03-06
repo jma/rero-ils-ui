@@ -15,10 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CoreModule, NgVarDirective, Nl2brPipe, RecordModule, TruncateTextPipe } from '@rero/ng-core';
+import { CoreModule, Nl2brPipe, RecordModule } from '@rero/ng-core';
 import { ContributionComponent } from '../public-api';
 import { ActionButtonComponent } from './component/action-button/action-button.component';
 import { BriefViewComponent } from './component/core/brief-view/brief-view.component';
@@ -38,6 +38,8 @@ import { PermissionsDirective } from './directive/permissions.directive';
 import { ReroTemplateDirective } from './directive/rero-template.directive';
 import { PrimeNgImportModule } from './modules/prime-ng-import/prime-ng-import.module';
 import { ShowMorePagerComponent } from './paginator/show-more-pager/show-more-pager.component';
+import { ArrayTranslatePipe } from './pipe/array-translate.pipe';
+import { DocumentProvisionActivityPipe } from './pipe/document-provision-activity.pipe';
 import { EntityLabelPipe } from './pipe/entity-label.pipe';
 import { ExtractSourceFieldPipe } from './pipe/extract-source-field.pipe';
 import { FaIconClassPipe } from './pipe/fa-icon-class.pipe';
@@ -48,6 +50,7 @@ import { IsArrayPipe } from './pipe/is-array.pipe';
 import { ItemHoldingsCallNumberPipe } from './pipe/item-holdings-call-number.pipe';
 import { JoinPipe } from './pipe/join.pipe';
 import { KeyExistsPipe } from './pipe/key-exists.pipe';
+import { MainTitleRelationPipe } from './pipe/main-title-relation.pipe';
 import { MainTitlePipe } from './pipe/main-title.pipe';
 import { NotesFilterPipe } from './pipe/notes-filter.pipe';
 import { PatronBlockedMessagePipe } from './pipe/patron-blocked-message.pipe';
@@ -59,95 +62,92 @@ import { PartOfComponent } from './view/brief/part-of/part-of.component';
 import { EntityLinkComponent } from './view/entity-link.component';
 import { InheritedCallNumberComponent } from './view/inherited-call-number/inherited-call-number.component';
 import { ThumbnailComponent } from './view/thumbnail/thumbnail.component';
-import { MainTitleRelationPipe } from './pipe/main-title-relation.pipe';
-import { DocumentProvisionActivityPipe } from './pipe/document-provision-activity.pipe';
-import { ArrayTranslatePipe } from './pipe/array-translate.pipe';
 
 @NgModule({
   declarations: [
-    ExtractSourceFieldPipe,
-    IdAttributePipe,
-    JoinPipe,
-    MainTitlePipe,
-    PatronBlockedMessagePipe,
-    ProvisionActivityPipe,
-    UrlActivePipe,
-    DocumentProvisionActivityPipe,
-    FaIconClassPipe,
-    ItemHoldingsCallNumberPipe,
-    MainTitleRelationPipe,
-    InheritedCallNumberComponent,
-    ThumbnailComponent,
-    PartOfComponent,
-    ShowMorePagerComponent,
-    KeyExistsPipe,
-    GetTranslatedLabelPipe,
     ActionButtonComponent,
-    NotesFilterPipe,
-    SafeUrlPipe,
-    PermissionsDirective,
-    LinkPermissionsDirective,
-    EntityLabelPipe,
-    NoContentDirective,
-    EntityBriefViewComponent,
+    ArrayTranslatePipe,
+    AvailabilityComponent,
     BriefViewComponent,
-    ReroTemplateDirective,
-    IsArrayPipe,
+    ContributionComponent,
+    DescriptionZoneComponent,
+    DocumentBriefViewComponent,
+    DocumentDescriptionComponent,
+    DocumentProvisionActivityPipe,
+    EntityBriefViewComponent,
     EntityBriefViewRemoteOrganisationComponent,
     EntityBriefViewRemotePersonComponent,
-    ContributionComponent,
-    NoContentDirective,
-    AvailabilityComponent,
+    EntityLabelPipe,
     EntityLinkComponent,
-    DocumentBriefViewComponent,
-    IdentifiedByLabelPipe,
+    ExtractSourceFieldPipe,
+    FaIconClassPipe,
     FilesComponent,
-    RemoteSearchComponent,
+    GetTranslatedLabelPipe,
+    IdAttributePipe,
+    IdentifiedByLabelPipe,
+    InheritedCallNumberComponent,
+    IsArrayPipe,
+    ItemHoldingsCallNumberPipe,
+    JoinPipe,
+    KeyExistsPipe,
+    LinkPermissionsDirective,
+    MainTitlePipe,
+    MainTitleRelationPipe,
+    NoContentDirective,
+    NoContentDirective,
+    NotesFilterPipe,
     OpenCloseButtonComponent,
-    DescriptionZoneComponent,
     OtherEditionComponent,
-    DocumentDescriptionComponent,
-    ArrayTranslatePipe
+    PartOfComponent,
+    PatronBlockedMessagePipe,
+    PermissionsDirective,
+    ProvisionActivityPipe,
+    RemoteSearchComponent,
+    ReroTemplateDirective,
+    SafeUrlPipe,
+    ShowMorePagerComponent,
+    ThumbnailComponent,
+    UrlActivePipe,
   ],
   exports: [
-    ProvisionActivityPipe,
-    DocumentDescriptionComponent,
-    MainTitlePipe,
-    DocumentProvisionActivityPipe,
-    CommonModule,
-    PrimeNgImportModule,
-    ExtractSourceFieldPipe,
-    IdAttributePipe,
-    JoinPipe,
-    MainTitlePipe,
-    PatronBlockedMessagePipe,
-    ProvisionActivityPipe,
-    UrlActivePipe,
-    Nl2brPipe,
-    ItemHoldingsCallNumberPipe,
-    InheritedCallNumberComponent,
-    ThumbnailComponent,
-    PartOfComponent,
-    ShowMorePagerComponent,
-    KeyExistsPipe,
-    GetTranslatedLabelPipe,
     ActionButtonComponent,
-    NotesFilterPipe,
-    SafeUrlPipe,
-    PermissionsDirective,
-    LinkPermissionsDirective,
-    EntityLabelPipe,
-    NoContentDirective,
-    ContributionComponent,
-    NoContentDirective,
+    ArrayTranslatePipe,
     AvailabilityComponent,
-    EntityLinkComponent,
+    CommonModule,
+    ContributionComponent,
     DocumentBriefViewComponent,
+    DocumentDescriptionComponent,
+    DocumentProvisionActivityPipe,
+    EntityLabelPipe,
+    EntityLinkComponent,
+    ExtractSourceFieldPipe,
     FilesComponent,
-    RemoteSearchComponent,
+    GetTranslatedLabelPipe,
+    IdAttributePipe,
+    InheritedCallNumberComponent,
+    ItemHoldingsCallNumberPipe,
+    JoinPipe,
+    KeyExistsPipe,
+    LinkPermissionsDirective,
+    MainTitlePipe,
+    MainTitlePipe,
+    Nl2brPipe,
+    NoContentDirective,
+    NoContentDirective,
+    NotesFilterPipe,
     OpenCloseButtonComponent,
     OtherEditionComponent,
-    ArrayTranslatePipe
+    PartOfComponent,
+    PatronBlockedMessagePipe,
+    PermissionsDirective,
+    PrimeNgImportModule,
+    ProvisionActivityPipe,
+    ProvisionActivityPipe,
+    RemoteSearchComponent,
+    SafeUrlPipe,
+    ShowMorePagerComponent,
+    ThumbnailComponent,
+    UrlActivePipe,
   ],
   imports: [
     CommonModule,
@@ -155,18 +155,6 @@ import { ArrayTranslatePipe } from './pipe/array-translate.pipe';
     RecordModule,
     RouterModule,
     PrimeNgImportModule
-  ],
-  providers: [
-    DatePipe,
-    MainTitlePipe,
-    JoinPipe,
-    UrlActivePipe,
-    TruncateTextPipe,
-    Nl2brPipe,
-    NgVarDirective,
-    KeyExistsPipe,
-    NotesFilterPipe,
-    EntityLabelPipe,
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })

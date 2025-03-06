@@ -23,12 +23,13 @@ import { ToastMessageOptions } from 'primeng/api/toastmessage';
 @Component({
     selector: 'public-search-patron-profile-message',
     template: `
-      <p-messages
-      [value]="messages"
-      [closable]="false"
-      [enableService]="false"
-      showTransitionOptions="0ms"
-    />
+    @for (message of messages; track message) {
+      <p-message
+        [text]="message.text"
+        [severity]="message.severity"
+        showTransitionOptions="0ms"
+      />
+    }
   `,
     standalone: false
 })

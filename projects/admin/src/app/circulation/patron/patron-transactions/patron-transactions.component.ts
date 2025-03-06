@@ -139,6 +139,8 @@ export class PatronTransactionsComponent implements OnInit, OnDestroy {
   }
 
   accordionOpen(event: AccordionTabOpenEvent): void {
+    // TODO: Bug on event: https://github.com/primefaces/primeng/issues/17770
+    console.log(event);
     // 2 = Transaction history
     if (event.index === 2) {
       this.loadFeesHistory();
@@ -163,6 +165,7 @@ export class PatronTransactionsComponent implements OnInit, OnDestroy {
       header: this.translateService.instant('Pay'),
       focusOnShow: false,
       width: '50vw',
+      closable: true,
       data: {
         action: 'pay',
         mode: 'full',
@@ -177,6 +180,7 @@ export class PatronTransactionsComponent implements OnInit, OnDestroy {
       header: this.translateService.instant('Pay for my library'),
       focusOnShow: false,
       width: '50vw',
+      closable: true,
       data: {
         action: 'pay',
         mode: 'full',
@@ -191,6 +195,7 @@ export class PatronTransactionsComponent implements OnInit, OnDestroy {
       header: this.translateService.instant('New fee'),
       focusOnShow: false,
       width: '30vw',
+      closable: true,
       data: {
         patronPid: this.patron.pid,
         organisationPid: this.patron.organisation.pid

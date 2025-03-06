@@ -1,6 +1,6 @@
 <!--
   RERO ILS UI
-  Copyright (C) 2022-2024 RERO
+  Copyright (C) 2022-2025 RERO
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU Affero General Public License as published by
@@ -16,7 +16,7 @@
 -->
 @defer (when model) {
   <ngx-loading-bar [includeSpinner]="false" height="3px"></ngx-loading-bar>
-  <p-messages />
+  <p-toast />
   <div>
     <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="mb-2">

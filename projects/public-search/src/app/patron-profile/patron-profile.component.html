@@ -24,15 +24,16 @@
   />
 </section>
 <section class="mt-4">
-  <p-messages />
+  <p-toast />
   <public-search-patron-profile-message/>
 </section>
 
 <section class="mt-4">
+  <!--
   <p-tabView  [activeIndex]="activeIndex" [scrollable]="true" (onChange)="tabOnChange($event)">
 @for (tab of tabs|keyvalue: sortTabs; track tab.key) {
   <p-tabPanel>
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <div class="flex items-center gap-1">
         <div>{{tab.value.title}}</div>
         @if (tab.value.count != null) {
@@ -70,6 +71,7 @@
   </p-tabPanel>
 }
   </p-tabView>
+-->
 </section>
 } @else {
 <div class="text-center">

@@ -67,7 +67,7 @@ export class HighlightJsonPipe implements PipeTransform {
         return `<span class="${cls}">${match}</span>`;
       }
     );
-    const html = this.sanitizer.bypassSecurityTrustHtml(json);
-    return html;
+
+    return this.sanitizer.bypassSecurityTrustHtml(json);
   }
 }

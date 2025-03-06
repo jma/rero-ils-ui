@@ -14,7 +14,6 @@
   You should have received a copy of the GNU Affero General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-
 <ngx-spinner
   name="file-upload"
   color="#fff"
@@ -47,7 +46,7 @@
       [maxFileSize]="500 * 1024 * 1024"
       (onSelect)="onSelect($event, '')"
     >
-      <ng-template pTemplate="toolbar">
+      <ng-template #toolbar>
         <div class="mt-2">
           <p class="text-warning" translate>
             By uploading a file, I declare that I am aware of the terms and
@@ -57,22 +56,14 @@
           </p>
         </div>
       </ng-template>
-      <ng-template let-file pTemplate="file"> </ng-template>
-      <ng-template let-file pTemplate="content">
+      <ng-template #file let-file></ng-template>
+      <ng-template #content let-file>
         @if (reachMaxFileLimit) {
-        <p-messages
-          [value]="[
-            {
-              severity: 'error',
-              detail:
-                'The maximum number of files is reached. No additional upload is allowed.'
-                | translate
-            }
-          ]"
-          [closable]="false"
-          [enableService]="false"
-          showTransitionOptions="0ms"
-        />
+          <p-message
+            [text]="'The maximum number of files is reached. No additional upload is allowed.' | translate"
+            severity="error"
+            showTransitionOptions="0ms"
+          />
         } @else {
         <span translate>Drag and drop files.</span>
         }

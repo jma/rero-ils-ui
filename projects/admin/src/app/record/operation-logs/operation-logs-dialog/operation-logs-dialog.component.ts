@@ -44,6 +44,7 @@ export class OperationLogsDialogComponent {
     this.dialogService.open(OperationLogsComponent, {
       header: this.translateService.instant('Operation history'),
       dismissableMask: true,
+      closable: true,
       width: '60vw',
       data: {
         resourceType: this.resourceType,

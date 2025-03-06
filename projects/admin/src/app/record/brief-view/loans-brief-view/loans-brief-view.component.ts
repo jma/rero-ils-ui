@@ -80,6 +80,7 @@ export class LoansBriefViewComponent implements ResultItem, OnInit {
     this.dialogService.open(CirculationLogsComponent, {
       header: this.translateService.instant("Circulation history"),
       width: '60vw',
+      closable: true,
       dismissableMask: true,
       data: {
         resourcePid: loanPid,

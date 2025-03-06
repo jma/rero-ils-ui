@@ -23,8 +23,6 @@
 @use '../../../../shared/src/scss/styles';
 @use '../menu/menu-dashboard/menu-dashboard.component';
 @use '../menu/menu-app/menu-app.component';
-@use '../record/detail-view/document-detail-view/holding/holding.component';
-@use '../record/detail-view/entities-detail-view/remote/entities-remote-detail-view.component';
 @use '../record/detail-view/permission-detail-view/permission-detail-view.component';
 @use '../migration/conversion/record/detail-view/migration-data/migration-data.component';
 @use '../acquisition/components/account/account-detail-view/account-detail-view.component';
@@ -58,13 +56,21 @@
     }
   }
 
-.p-accordion-header, .p-panel-header {
+p-accordion-header {
+  @apply flex items-start;
   background-color: var(--p-surface-100);
   a {
     background: transparent;
+  }
+  .p-iconwrapper {
+    @apply mt-2;
   }
 }
 
 ng-core-editor-field-password-generator {
   @apply w-full;
+}
+
+.p-panel-header {
+  background: var(--p-surface-100) !important;
 }

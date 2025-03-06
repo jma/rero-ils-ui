@@ -34,6 +34,7 @@ export class ExceptionDatesListComponent {
 
   editException(index: number): void {
     this.dynamicDialogRef = this.dialogService.open(ExceptionDatesEditComponent, {
+      closable: true,
       data: {
         exceptionDate: this.exceptionDates[index]
       }

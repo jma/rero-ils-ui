@@ -1,6 +1,6 @@
 /*
  * RERO ILS UI
- * Copyright (C) 2024 RERO
+ * Copyright (C) 2024-2025 RERO
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -21,13 +21,21 @@ import { RecordSearchPageComponent } from '@rero/ng-core';
 @Component({
     selector: 'admin-migration-search-page',
     template: `
-  <admin-migration-search [adminMode]="adminMode" [currentType]="currentType" [types]="types" [detailUrl]="detailUrl"
-  [showSearchInput]="showSearchInput" [q]="q" [page]="page" [size]="size" [sort]="sort"
-  (parametersChanged)="updateUrl($event)">
-</admin-migration-search>
+      <admin-migration-search
+        [adminMode]="adminMode"
+        [currentType]="currentType"
+        [types]="types"
+        [detailUrl]="detailUrl"
+        [showSearchInput]="showSearchInput"
+        [q]="q"
+        [page]="page"
+        [size]="size"
+        [sort]="sort"
+        (parametersChanged)="updateUrl($event)"
+      />
   `,
     standalone: false
 })
-export class MigrationSearchPageComponent extends RecordSearchPageComponent  {
+export class MigrationSearchPageComponent extends RecordSearchPageComponent {
 
 }

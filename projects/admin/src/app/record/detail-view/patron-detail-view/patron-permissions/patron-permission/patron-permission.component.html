@@ -27,13 +27,13 @@
     <i class="fa fa-square" [ngClass]="{'text-success': permission.can, 'text-error': !permission.can}"></i>
   </div>
   @if(!isCollapsed) {
-  <div id="reasons" class="col my-1 ml-8">
-    <ul class="list-none m-0 p-0">
+  <div id="reasons" class="col-span-12 my-1 ml-8">
+    <ul class="list-none">
       @for (role of permission.reasons | keyvalue; track role) {
         <li>
           <div class="grid grid-cols-12 gap-4">
             <div class="col-span-6">{{ role.key | translate }}</div>
-            <div class="col-span-12">
+            <div>
               <i class="fa fa-square" [ngClass]="{
                  'text-success': role.value === true,
                  'text-error': role.value === false,

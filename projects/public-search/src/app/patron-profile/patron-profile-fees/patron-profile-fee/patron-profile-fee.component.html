@@ -57,7 +57,7 @@
           <p-panel styleClass="bg-transparent time-line-30" [header]="'Transactions history' | translate" id="fee-{{ record.metadata.pid }}-transaction">
 
             <p-timeline [value]="events">
-              <ng-template pTemplate="content" let-event>
+              <ng-template #content let-event>
                   <div class="grid grid-cols-12 gap-4 grid-nogutter" [ngClass]="{ 'event-highlight': (event.metadata.type === 'dispute'), '': !(event.metadata.type === 'dispute') }">
                     <div class="col-span-10">
                       {{ event.metadata.type | translate }}
@@ -94,7 +94,7 @@
                       </dl>
                     }
               </ng-template>
-              <ng-template pTemplate="opposite" let-event>
+              <ng-template #opposite let-event>
                 <div class="p-text-secondary text-sm">
                   <i class="fa fa-calendar-o"></i>
                   {{ event.metadata.creation_date | dateTranslate: 'shortDate' }}
@@ -102,7 +102,7 @@
                   {{ event.metadata.creation_date | dateTranslate: 'HH:mm' }}
                 </div>
               </ng-template>
-              <ng-template pTemplate="marker" let-event>
+              <ng-template #marker let-event>
                 <span
                 class="flex items-center justify-center text-white rounded-full z-10 shadow-sm"
                 [ngClass]="event.metadata.type === 'dispute'? 'background-warning': event.metadata.type === 'payment'? 'background-success': 'background-error'"

@@ -27,7 +27,7 @@ import { Component, Input } from '@angular/core';
       </small>
     }
   </h5>
-    <ul class="list-none m-0 p-0">
+    <ul class="list-none">
       @if (record.metadata.description) {
         <li>
           {{ record.metadata.description | truncateText: 8 }}

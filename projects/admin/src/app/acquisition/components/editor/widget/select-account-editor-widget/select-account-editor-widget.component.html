@@ -24,10 +24,10 @@
   (onChange)="selectAccount($event)"
   [loading]="loading"
 >
-  <ng-template pTemplate="selectedItem">
+  <ng-template #selectedItem>
     {{ selectedAccount.name }}
   </ng-template>
-  <ng-template let-account pTemplate="item">
+  <ng-template #item let-account>
     <div class="flex">
       <span
         class="flex grow"

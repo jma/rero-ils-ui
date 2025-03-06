@@ -98,6 +98,7 @@ export class DefaultHoldingItemComponent implements OnInit {
     const ref: DynamicDialogRef = this.dialogService.open(ItemRequestComponent,{
       header: this.translateService.instant('Item Request'),
       width: '30vw',
+      closable: true,
       data: { recordPid, recordType }
     })
     ref.onClose.subscribe((value: boolean) => {

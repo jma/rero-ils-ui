@@ -31,7 +31,7 @@
   <!-- SUGGESTED EMAILS -->
   @if (emails.length > 0) {
     <p-panel>
-      <ng-template pTemplate="header">
+      <ng-template #header>
         <div class="p-panel-title">
         @if (emails.length < 2) {
           {{ 'Suggested email address' | translate }}

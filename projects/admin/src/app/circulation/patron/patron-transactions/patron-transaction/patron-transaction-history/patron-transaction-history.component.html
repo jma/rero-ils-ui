@@ -15,7 +15,7 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <p-timeline [value]="events()">
-  <ng-template pTemplate="marker" let-event>
+  <ng-template #marker let-event>
     <span
       class="flex w-4 h-4 items-center justify-center text-white rounded-full z-10 shadow-sm"
       [ngClass]="{
@@ -27,7 +27,7 @@
     >
     </span>
   </ng-template>
-  <ng-template pTemplate="content" let-event>
+  <ng-template #content let-event>
     <div class="flex gap-2">
       <div>{{ eventLabel(event) }}</div>
         @if (event.type !== patronTransactionEventType.DISPUTE) {
@@ -109,7 +109,7 @@
       </div>
   </ng-template>
 
-  <ng-template pTemplate="opposite" let-event>
+  <ng-template #opposite let-event>
     <small class="p-text-secondary">
       <i class="fa fa-calendar-o"></i> {{ event.creation_date | dateTranslate: 'shortDate' }}
       <i class="fa fa-clock-o pl-1"></i> {{ event.creation_date | dateTranslate: 'HH:mm:ss' }}

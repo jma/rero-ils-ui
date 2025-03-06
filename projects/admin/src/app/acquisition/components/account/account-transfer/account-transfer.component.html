@@ -25,12 +25,12 @@
         [ngModel]="selectedBudget"
         [options]="budgets"
       >
-        <ng-template pTemplate="selectedItem">
+        <ng-template #selectedItem>
           {{
             selectedBudget.code | getRecord : "budgets" : "field" : "name" | async
           }}
         </ng-template>
-        <ng-template let-budget pTemplate="item">
+        <ng-template #item let-budget>
           {{ budget.code | getRecord : "budgets" : "field" : "name" | async }}
         </ng-template>
       </p-select>
@@ -38,7 +38,7 @@
   </div>
   <form [formGroup]="form" (ngSubmit)="submit()">
     <p-card class="p-card-body-p-0">
-      <ng-template pTemplate="header">
+      <ng-template #header>
       <div class="hidden md:flex grid grid-cols-12 gap-4 grid-nogutter bg-blue-900 text-white p-2 text-lg font-bold">
         <div class="col-span-1 text-center" translate>Source</div>
         <div class="col-start-7 col-span-2 text-right" translate>Amount</div>
@@ -97,7 +97,7 @@
           {{ "No account available" | translate }}
         }
       </div>
-      <ng-template pTemplate="footer">
+      <ng-template #footer>
         <p-divider />
         <div class="flex flex-col gap-2 px-6 pb-6">
           <label for="amount" translate>Amount</label>

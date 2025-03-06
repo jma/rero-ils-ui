@@ -80,6 +80,7 @@ export class ItemTransactionsComponent implements OnInit, OnDestroy {
     const ref = this.dialogService.open(ItemRequestComponent, {
       header: this.translateService.instant('Item request'),
       width: '40vw',
+      closable: true,
       data: { recordPid: this.itemPid, recordType: 'item' }
     });
     this.subscription.add(

@@ -1,6 +1,6 @@
 /*
  * RERO ILS UI
- * Copyright (C) 2019-2024 RERO
+ * Copyright (C) 2019-2025 RERO
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -58,5 +58,17 @@ export class VendorDetailViewComponent implements DetailRecord {
   filterContact(contacts: any[], type: string): any {
     const contact = contacts.filter((contact: any) => contact.type === type);
     return contact.length === 0 ? undefined : contact[0];
+  }
+
+  tabSelected(record: any): string {
+    if (record.contacts.some((contact: any) => contact.type === 'default')) {
+      return 'default';
+    }
+    if (record.contacts.some((contact: any) => contact.type === 'order')) {
+      return 'order';
+    }
+    if (record.contacts.some((contact: any) => contact.type === 'serial')) {
+      return 'serial';
+    }
   }
 }

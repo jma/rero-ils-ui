@@ -32,13 +32,12 @@
     }
   </div>
 </header>
+<div class="container pb-6">
 @if (user?.hasAdminUiAccess) {
-  <div class="container">
-    <admin-menu-app />
-  </div>
-  <div class="container px-8">
+  <admin-menu-app />
+  <div class="px-8">
     <p-toast>
-      <ng-template let-message pTemplate="message">
+      <ng-template #message let-message>
         <div class="flex flex-col items-start" style="flex: 1">
           <div class="font-medium text-lg text-surface-900 dark:text-surface-0">
             {{ message.summary }}
@@ -56,6 +55,7 @@
     {{ 'You do not have sufficient permissions to view this page' | translate }}
   </div>
 }
+</div>
 
 <footer class="container px-8 flex border-t border-surface justify-center items-center mt-6 py-6">
   <p class="text-secondary mb-0">

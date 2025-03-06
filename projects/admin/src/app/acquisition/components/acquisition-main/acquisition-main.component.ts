@@ -22,7 +22,7 @@ import { Component } from '@angular/core';
     template: `
     <router-outlet></router-outlet>
     <p-toast>
-      <ng-template let-message pTemplate="message">
+      <ng-template #message let-message>
         <div class="flex flex-col items-start" style="flex: 1">
           <div class="font-medium text-lg text-surface-900 dark:text-surface-0">
             {{ message.summary }}
@@ -33,7 +33,6 @@ import { Component } from '@angular/core';
     </p-toast>
     <p-confirmDialog />
   `,
-    styles: ``,
     standalone: false
 })
 export class AcquisitionMainComponent {

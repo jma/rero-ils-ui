@@ -121,7 +121,7 @@
             @if (notifications.length > 0) {
               <dt translate>Notifications</dt>
               <dd>
-                <ul class="list-none m-0 p-0">
+                <ul class="list-none">
                   @for (notification of notifications; track notification) {
                     <li>
                       <span class="text-muted-color small">
@@ -174,7 +174,7 @@
     <!-- CIRCULATION INFO -->
     <div name="circ-info" class="col-span-2">
       @if (item.loan) {
-        <ul class="list-none m-0 p-0">
+        <ul class="list-none">
           @switch (item.status) {
             @case ('on_loan') {
               <li>
@@ -231,10 +231,12 @@
             }
             @if (isCollapsed && item.pending_loans && item.pending_loans.length) {
               <p-tag [title]="'Requests'|translate" severity="secondary" styleClass="mr-1">
-                <i class="fa fa-shopping-basket"></i>&nbsp;
-                <a class="text-white" [routerLink]="['/circulation', 'patron', item.pending_loans[0].patron.barcode, 'loan']">
-                  {{ item.pending_loans[0].patron.name }}
-                </a>
+                <div class="flex items-start gap-1">
+                  <i class="fa fa-shopping-basket mt-1"></i>&nbsp;
+                  <a class="text-white" [routerLink]="['/circulation', 'patron', item.pending_loans[0].patron.barcode, 'loan']">
+                    {{ item.pending_loans[0].patron.name }}
+                  </a>
+                </div>
               </p-tag>
             }
           </li>

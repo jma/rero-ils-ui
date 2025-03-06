@@ -21,7 +21,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FORMLY_CONFIG, FormlyModule } from '@ngx-formly/core';
 import { FormlyPrimeNGModule } from '@ngx-formly/primeng';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ApiService, CoreModule, RecordModule } from '@rero/ng-core';
 import { SharedModule } from '@rero/shared';
 import { PreviewEmailModule } from '../shared/preview-email/preview-email.module';
@@ -62,33 +62,33 @@ import { ReceptionDatesPipe } from './pipes/reception-dates.pipe';
 
 @NgModule({
   declarations: [
+    AccountAvailableAmountPipe,
+    AccountDetailViewComponent,
     AccountListComponent,
     AccountTransferComponent,
-    AccountDetailViewComponent,
-    BudgetsBriefViewComponent,
+    AcquisitionMainComponent,
     BudgetDetailViewComponent,
+    BudgetsBriefViewComponent,
     FieldDocumentBriefViewTypeComponent,
     FieldRefTypeComponent,
     InputNoLabelWrapperComponent,
     NegativeAmountPipe,
+    NoteBadgeColorPipe,
+    NotesComponent,
     OrderBriefViewComponent,
     OrderDetailViewComponent,
-    OrderLinesComponent,
+    OrderEmailFormComponent,
     OrderLineComponent,
+    OrderLinesComponent,
     OrderReceiptViewComponent,
     OrderSummaryComponent,
-    RepeatTypeComponent,
-    SelectAccountEditorWidgetComponent,
-    ReceiptListComponent,
-    ReceiptSummaryComponent,
-    NoteBadgeColorPipe,
-    AccountAvailableAmountPipe,
-    ReceptionDatesPipe,
     PreviewContentPipe,
     ReceiptLineTotalAmountPipe,
-    OrderEmailFormComponent,
-    NotesComponent,
-    AcquisitionMainComponent
+    ReceiptListComponent,
+    ReceiptSummaryComponent,
+    ReceptionDatesPipe,
+    RepeatTypeComponent,
+    SelectAccountEditorWidgetComponent,
   ],
   imports: [
     CommonModule,
@@ -112,6 +112,7 @@ import { ReceptionDatesPipe } from './pipes/reception-dates.pipe';
     SharedModule,
     PreviewEmailModule,
     PrimengImportModule,
+    TranslateModule.forChild(),
   ],
   providers: [
     { provide: FORMLY_CONFIG, multi: true, useFactory: registerFormlyExtension, deps: [TranslateService] },

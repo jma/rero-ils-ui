@@ -1,6 +1,6 @@
 <!--
   RERO ILS UI
-  Copyright (C) 2020-2024 RERO
+  Copyright (C) 2020-2025 RERO
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU Affero General Public License as published by
@@ -15,30 +15,30 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <p-menubar [model]="items" [autoDisplay]="false">
-  <ng-template pTemplate="item" let-item let-root="root">
+  <ng-template #item let-item let-root="root">
     <a
       pRipple
-      class="flex p-element p-menu-item-link"
+      class="flex items-center p-menubar-item-link"
       [attr.id]="item.id"
       [routerLink]="item.routerLink"
       [href]="item.url"
       [queryParams]="item.queryParams"
     >
       @if (item.icon) {
-        <span [class]="item.icon" class="p-menu-item-icon"></span>
+        <span [class]="item.icon" class="p-menubar-item-icon"></span>
       }
-      <span class="p-menu-item-label">{{ item.label }}</span>
+      <span>{{ item.label }}</span>
       @if (item.shortcut) {
-        <span class="ml-auto border border-surface rounded-border bg-surface-100 dark:bg-surface-700 text-sm px-2 py-1">
+        <span class="ml-auto border border-surface rounded bg-surface-100 bg-emphasis text-muted-color text-xs p-1">
           {{ item.shortcut }}
         </span>
       }
       @if (item.items) {
-        <i [ngClass]="['pi', root ? 'pi-angle-down ml-2' : 'pi-angle-right ml-auto']"></i>
+        <i [ngClass]="['ml-auto pi', root ? 'pi-angle-down ml-2' : 'pi-angle-right']"></i>
       }
     </a>
   </ng-template>
-  <ng-template pTemplate="end">
+  <ng-template #end>
     <admin-menu-user />
   </ng-template>
 </p-menubar>
