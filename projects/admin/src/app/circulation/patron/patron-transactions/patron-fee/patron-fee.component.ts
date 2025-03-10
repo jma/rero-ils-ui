@@ -102,7 +102,6 @@ export class PatronFeeComponent implements OnInit {
 
   /** Init form model */
   private _initForm(properties: any): void {
-    console.log(properties.type);
     this.formFields = [{
       key: 'type',
       type: 'select',

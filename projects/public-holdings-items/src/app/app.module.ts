@@ -27,7 +27,14 @@ import { FormlyPrimeNGModule } from '@ngx-formly/primeng';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { TranslateLoader as BaseTranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { CoreConfigService, CoreModule, NgCoreTranslateService, primeNGConfig, RecordModule, TranslateLoader } from '@rero/ng-core';
+import {
+  CoreConfigService,
+  CoreModule,
+  NgCoreTranslateService,
+  primeNGConfig,
+  RecordModule,
+  TranslateLoader,
+} from '@rero/ng-core';
 import { SharedModule } from '@rero/shared';
 import { AccordionModule } from 'primeng/accordion';
 import { DividerModule } from 'primeng/divider';
@@ -45,52 +52,64 @@ import { AppConfigService } from './app-config-service.service';
 import { AppInitializerService } from './app-initializer.service';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
+import { TabsModule } from 'primeng/tabs';
+import { MessageModule } from 'primeng/message';
+import { CardModule } from 'primeng/card';
 
 /** function to instantiate the application  */
 export function appInitFactory(appInitializerService: AppInitializerService): () => Observable<any> {
   return () => appInitializerService.load();
 }
 
-@NgModule({ declarations: [
-        HoldingComponent,
-        HoldingsComponent,
-        ItemComponent,
-        ItemsComponent,
-        PickupLocationComponent,
-        RequestComponent,
-        DocumentDetailViewComponent,
-        ElectronicHoldingsComponent,
-    ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA], imports: [AccordionModule,
-        MenubarModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        DividerModule,
-        RouterModule.forRoot([]),
-        FormsModule,
-        FormlyModule.forRoot(),
-        FormlyPrimeNGModule,
-        CoreModule,
-        RecordModule,
-        ReactiveFormsModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: BaseTranslateLoader,
-                useClass: TranslateLoader,
-                deps: [CoreConfigService, HttpClient],
-            },
-            isolate: false,
-        }),
-        SharedModule,
-        LoadingBarHttpClientModule,
-        LoadingBarModule], providers: [
-        { provide: TranslateService, useClass: NgCoreTranslateService },
-        { provide: APP_INITIALIZER, useFactory: appInitFactory, deps: [AppInitializerService], multi: true },
-        { provide: CoreConfigService, useClass: AppConfigService },
-        provideHttpClient(withInterceptorsFromDi()),
-        provideAnimationsAsync(),
-        providePrimeNG(primeNGConfig)
-    ] })
+@NgModule({
+  declarations: [
+    HoldingComponent,
+    HoldingsComponent,
+    ItemComponent,
+    ItemsComponent,
+    PickupLocationComponent,
+    RequestComponent,
+    DocumentDetailViewComponent,
+    ElectronicHoldingsComponent,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [
+    AccordionModule,
+    TabsModule,
+    CardModule,
+    MessageModule,
+    MenubarModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    DividerModule,
+    RouterModule.forRoot([]),
+    FormsModule,
+    FormlyModule.forRoot(),
+    FormlyPrimeNGModule,
+    CoreModule,
+    RecordModule,
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: BaseTranslateLoader,
+        useClass: TranslateLoader,
+        deps: [CoreConfigService, HttpClient],
+      },
+      isolate: false,
+    }),
+    SharedModule,
+    LoadingBarHttpClientModule,
+    LoadingBarModule,
+  ],
+  providers: [
+    { provide: TranslateService, useClass: NgCoreTranslateService },
+    { provide: APP_INITIALIZER, useFactory: appInitFactory, deps: [AppInitializerService], multi: true },
+    { provide: CoreConfigService, useClass: AppConfigService },
+    provideHttpClient(withInterceptorsFromDi()),
+    provideAnimationsAsync(),
+    providePrimeNG(primeNGConfig),
+  ],
+})
 export class AppModule implements DoBootstrap {
   private injector: Injector = inject(Injector);
 

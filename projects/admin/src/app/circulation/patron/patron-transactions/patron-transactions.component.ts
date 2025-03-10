@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, model, OnDestroy, OnInit } from '@angular/core';
 import { Loan, LoanOverduePreview } from '@app/admin/classes/loans';
 import { PatronTransaction, PatronTransactionStatus } from '@app/admin/classes/patron-transaction';
 import { OrganisationService } from '@app/admin/service/organisation.service';
@@ -47,6 +47,8 @@ export class PatronTransactionsComponent implements OnInit, OnDestroy {
   private circulationService: CirculationService = inject(CirculationService);
 
   private dynamicDialogRef: DynamicDialogRef | undefined;
+
+  activePanel = model<undefined | string>(undefined);
 
   // COMPONENTS ATTRIBUTES ===============================================================
   /** all tab reference array */
@@ -97,6 +99,15 @@ export class PatronTransactionsComponent implements OnInit, OnDestroy {
   // CONSTRUCTOR & HOOKS ==================================================================
   /** OnInit hook */
   ngOnInit(): void {
+    this.activePanel.set("0");
+    this.subscriptions.add(
+      this.activePanel.subscribe(val => {
+        // lazy loading history
+        if (val === "2") {
+          this.loadFeesHistory();
+        }
+      })
+    );
     this.patronService.currentPatron$.subscribe((patron: any) => {
       if (patron) {
         this.patron = patron;
@@ -136,15 +147,6 @@ export class PatronTransactionsComponent implements OnInit, OnDestroy {
         disabled: this.myLibraryEngagedFees.length === 0
       }
     ];
-  }
-
-  accordionOpen(event: AccordionTabOpenEvent): void {
-    // TODO: Bug on event: https://github.com/primefaces/primeng/issues/17770
-    console.log(event);
-    // 2 = Transaction history
-    if (event.index === 2) {
-      this.loadFeesHistory();
-    }
   }
 
   // COMPONENT FUNCTIONS ==================================================================

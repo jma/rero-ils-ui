@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import { APP_BASE_HREF, Location, ViewportScroller } from '@angular/common';
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, model, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AcqOrderApiService } from '@app/admin/acquisition/api/acq-order-api.service';
 import { AcqReceiptApiService } from '@app/admin/acquisition/api/acq-receipt-api.service';
@@ -75,7 +75,7 @@ export class OrderDetailViewComponent implements DetailRecord, OnInit, OnDestroy
 
   modalRef: DynamicDialogRef | undefined;
 
-  tabActiveIndex = 0;
+  tabActiveIndex = model<undefined | string >(undefined);
 
   // GETTER & SETTER ==========================================================
   /** Determine if the order could be "placed/ordered" */
@@ -94,7 +94,8 @@ export class OrderDetailViewComponent implements DetailRecord, OnInit, OnDestroy
 
   /** OnInit hook */
   ngOnInit(): void {
-    this.tabActiveIndex = +this.route.snapshot.queryParamMap.get('tab') || 0;
+    this.tabActiveIndex.set(this.route.snapshot.queryParamMap.get('tab') || 'order');
+    this.subscriptions.add(this.tabActiveIndex.subscribe(tabName => this.addTabToUrl(tabName)));
     this.subscriptions.add(
       this.record$.pipe(
         tap((record: any) => this.order = record.metadata),

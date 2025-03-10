@@ -31,6 +31,8 @@ import { EntityBriefViewComponent } from './component/entities/entity-brief-view
 import { EntityBriefViewRemoteOrganisationComponent } from './component/entities/entity-brief-view/entity-brief-view.organisation';
 import { EntityBriefViewRemotePersonComponent } from './component/entities/entity-brief-view/entity-brief-view.person';
 import { OpenCloseButtonComponent } from './component/open-close-button.component';
+import { OperationLogsDialogComponent } from './component/operation-logs/operation-logs-dialog/operation-logs-dialog.component';
+import { OperationLogsComponent } from './component/operation-logs/operation-logs.component';
 import { RemoteSearchComponent } from './component/remote-search/remote-search.component';
 import { LinkPermissionsDirective } from './directive/link-permissions.directive';
 import { NoContentDirective } from './directive/no-content.directive';
@@ -108,6 +110,8 @@ import { ThumbnailComponent } from './view/thumbnail/thumbnail.component';
     ShowMorePagerComponent,
     ThumbnailComponent,
     UrlActivePipe,
+    OperationLogsComponent,
+    OperationLogsDialogComponent
   ],
   exports: [
     ActionButtonComponent,
@@ -130,7 +134,7 @@ import { ThumbnailComponent } from './view/thumbnail/thumbnail.component';
     KeyExistsPipe,
     LinkPermissionsDirective,
     MainTitlePipe,
-    MainTitlePipe,
+    MainTitleRelationPipe,
     Nl2brPipe,
     NoContentDirective,
     NoContentDirective,
@@ -148,13 +152,15 @@ import { ThumbnailComponent } from './view/thumbnail/thumbnail.component';
     ShowMorePagerComponent,
     ThumbnailComponent,
     UrlActivePipe,
+    OperationLogsComponent,
+    OperationLogsDialogComponent
   ],
   imports: [
     CommonModule,
     CoreModule,
     RecordModule,
     RouterModule,
-    PrimeNgImportModule
+    PrimeNgImportModule,
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, model, OnInit } from '@angular/core';
 import { HoldingsApiService } from '@app/admin/api/holdings-api.service';
 import { RecordPermissionService } from '@app/admin/service/record-permission.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -45,6 +45,8 @@ export class HoldingsComponent implements OnInit {
   @Input() holdingType: 'electronic' | 'serial' | 'standard';
   /** Restrict the functionality of interface */
   @Input() isCurrentOrganisation = true;
+
+  activePanels = model<null | number[]>(null);
 
   options: any[];
 
@@ -98,6 +100,7 @@ export class HoldingsComponent implements OnInit {
 
   /** onInit hook */
   ngOnInit() {
+    this.activePanels.set(this.isCurrentOrganisation? [0]: null)
     this.options = [
       {
         label: this.translateService.instant('an item'),

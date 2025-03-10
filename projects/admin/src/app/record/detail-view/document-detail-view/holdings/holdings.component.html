@@ -23,7 +23,7 @@
 
 @if (holdings) {
   <div class="mt-2">
-    <p-accordion multiple [value]="isCurrentOrganisation ? 0: ''" (onOpen)="onOpen($event)">
+    <p-accordion [multiple]="true" [(value)]="activePanels" (onOpen)="onOpen($event)">
       @for (holding of holdings; track holding; let i = $index) {
         <p-accordion-panel [value]="i" class="mb-2">
           <p-accordion-header>
@@ -35,11 +35,13 @@
             />
           </p-accordion-header>
           <p-accordion-content>
+            @if(activePanels()?.indexOf(i) >= 0) {
             <admin-holding-content
               class="w-full"
               [holding]="holding"
               [isCurrentOrganisation]="isCurrentOrganisation"
             />
+          }
           </p-accordion-content>
         </p-accordion-panel>
       }

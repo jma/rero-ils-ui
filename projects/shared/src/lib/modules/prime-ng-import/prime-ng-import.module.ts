@@ -22,6 +22,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { DialogModule } from 'primeng/dialog';
 import { PaginatorModule } from 'primeng/paginator';
 import { SkeletonModule } from 'primeng/skeleton';
+import { TableModule } from 'primeng/table';
 import { TabsModule } from 'primeng/tabs';
 import { TagModule } from 'primeng/tag';
 import { TimelineModule } from 'primeng/timeline';
@@ -38,6 +39,7 @@ import { ToastModule } from 'primeng/toast';
     TagModule,
     TimelineModule,
     ToastModule,
+    TableModule
   ]
 })
 export class PrimeNgImportModule { }

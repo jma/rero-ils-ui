@@ -86,10 +86,5 @@
         </p-tabpanels>
       </p-tabs>
     </section>
-
-    <!-- OPERATION LOGS-->
-    @if (isEnabledOperationLog) {
-      <admin-operation-logs resourceType="vendors" [resourcePid]="record.metadata.pid" />
-    }
   </article>
 }

@@ -38,7 +38,6 @@ export class HoldingContentComponent implements OnInit, OnDestroy {
   displayItemsCounter = 10;
 
   ngOnInit(): void {
-    console.log(this.holding());
     this.holdingType = this.holding().metadata.holdings_type;
     if (this.holdingType !== 'electronic') {
       this._loadItems();

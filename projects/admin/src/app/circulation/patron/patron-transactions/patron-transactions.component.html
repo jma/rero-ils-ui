@@ -15,7 +15,7 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <section class="content">
-  <p-accordion value="0" (onOpen)="accordionOpen($event)">
+  <p-accordion [(value)]="activePanel">
     <p-accordion-panel value="0">
       <p-accordion-header>
         <div class="flex items-center w-full">
@@ -94,7 +94,7 @@
         }
       </p-accordion-content>
     </p-accordion-panel>
-    <p-accordion-panel>
+    <p-accordion-panel value="2">
       <p-accordion-header>
         <h6 translate>History</h6>
       </p-accordion-header>

@@ -59,7 +59,7 @@
     }
   </admin-order-summary>
 
-  <p-tabs>
+  <p-tabs [(value)]="tabActiveIndex">
     <p-tablist>
       <p-tab value="order" translate>Order</p-tab>
       <p-tab value="reception" [disabled]="disabledReceipts" translate>Reception</p-tab>

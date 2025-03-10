@@ -196,6 +196,6 @@ export class OrderReceiptViewComponent implements OnInit {
 
   /** Redirect to order detail view */
   redirectToOrder(): void {
-    this.router.navigate(['/', 'records', 'acq_orders', 'detail', this.orderPid], { queryParams: {tab: 1}});
+    this.router.navigate(['/acquisition', 'records', 'acq_orders', 'detail', this.orderPid], { queryParams: {tab: 'reception'}});
   }
 }

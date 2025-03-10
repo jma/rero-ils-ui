@@ -22,8 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader as BaseTranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { CoreConfigService, primeNGConfig, TranslateLoader } from '@rero/ng-core';
-import { RemoteSearchComponent, SharedModule } from '@rero/shared';
+import { CoreConfigService, primeNGConfig, TranslateLoader, TruncateTextPipe } from '@rero/ng-core';
+import { MainTitlePipe, RemoteSearchComponent, SharedModule } from '@rero/shared';
 import { Observable } from 'rxjs';
 import { AppInitializerService } from './app-initializer.service';
 import { RouterModule } from '@angular/router';
@@ -62,7 +62,9 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
     },
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimationsAsync(),
-    providePrimeNG(primeNGConfig)
+    providePrimeNG(primeNGConfig),
+    MainTitlePipe,
+    TruncateTextPipe
   ],
 })
 export class AppModule implements DoBootstrap {

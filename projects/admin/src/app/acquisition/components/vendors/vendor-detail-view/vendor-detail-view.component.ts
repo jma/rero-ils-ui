@@ -18,7 +18,6 @@ import { Component, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DetailRecord } from '@rero/ng-core/lib/record/detail/view/detail-record';
 import { Observable } from 'rxjs';
-import { OperationLogsService } from '../../../service/operation-logs.service';
 
 @Component({
     selector: 'admin-vendor-detail-view',
@@ -28,24 +27,12 @@ import { OperationLogsService } from '../../../service/operation-logs.service';
 export class VendorDetailViewComponent implements DetailRecord {
 
   private translateService: TranslateService = inject(TranslateService);
-  private operationLogsService: OperationLogsService = inject(OperationLogsService);
 
   /** Observable resolving record data */
   record$: Observable<any>;
 
   /** Resource type */
   type: string;
-
-  /** Load operation logs on show */
-  showOperationLogs = false;
-
-  /**
-   * Is operation log enabled
-   * @return boolean
-   */
-  get isEnabledOperationLog(): boolean {
-    return this.operationLogsService.isLogVisible('vendors');
-  }
 
   /**
    * Get Current language interface

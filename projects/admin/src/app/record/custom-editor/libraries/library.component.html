@@ -268,8 +268,8 @@
       </p-accordion-content>
     </p-accordion-panel>
     <!-- EXCEPTIONS DATES TAB ========================================= -->
-    <p-accordion-panel value="2">
-      <p-accordion-header #test>
+    <p-accordion-panel value="2" #exceptionsPanel>
+      <p-accordion-header>
         <div class="flex w-full items-center justify-between mr-2">
           <div>
             <i class="fa fa-exclamation-triangle"></i>&nbsp;
@@ -277,18 +277,8 @@
           </div>
 
           <div class="flex gap-2 items-center">
-            <!-- TODO: problem with button hidden property -->
-            <!--
             <p-button
-              [hidden]="!test.selected"
-              size="small"
-              outlined
-              (onClick)="$event.stopPropagation(); addException()"
-              icon="fa fa-plus-square-o"
-              [label]="'Add' | translate"
-            />
-            -->
-            <p-button
+              [hidden]="!exceptionsPanel.active()"
               size="small"
               outlined
               (onClick)="$event.stopPropagation(); addException()"

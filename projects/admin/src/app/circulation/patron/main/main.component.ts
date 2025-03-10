@@ -25,7 +25,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { RecordService } from '@rero/ng-core';
 import { MenuItem } from 'primeng/api';
 import { forkJoin, Subscription, switchMap, tap } from 'rxjs';
-import { OperationLogsApiService } from '../../../api/operation-logs-api.service';
+import { OperationLogsApiService } from '@rero/shared';
 import { CirculationStatistics } from '../../circulationStatistics';
 import { CirculationService } from '../../services/circulation.service';
 

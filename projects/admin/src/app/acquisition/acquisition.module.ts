@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FORMLY_CONFIG, FormlyModule } from '@ngx-formly/core';
@@ -59,6 +59,9 @@ import { NoteBadgeColorPipe } from './pipes/note-badge-color.pipe';
 import { PreviewContentPipe } from './pipes/preview-content.pipe';
 import { ReceiptLineTotalAmountPipe } from './pipes/receipt-line-total-amount.pipe';
 import { ReceptionDatesPipe } from './pipes/reception-dates.pipe';
+import { VendorBriefViewComponent } from './components/vendors/vendor-brief-view.component';
+import { VendorDetailViewComponent } from './components/vendors/vendor-detail-view/vendor-detail-view.component';
+import { AddressTypeComponent } from './components/address-type/address-type.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +92,9 @@ import { ReceptionDatesPipe } from './pipes/reception-dates.pipe';
     ReceptionDatesPipe,
     RepeatTypeComponent,
     SelectAccountEditorWidgetComponent,
+    VendorBriefViewComponent,
+    VendorDetailViewComponent,
+    AddressTypeComponent
   ],
   imports: [
     CommonModule,
@@ -112,7 +118,7 @@ import { ReceptionDatesPipe } from './pipes/reception-dates.pipe';
     SharedModule,
     PreviewEmailModule,
     PrimengImportModule,
-    TranslateModule.forChild(),
+    TranslateModule
   ],
   providers: [
     { provide: FORMLY_CONFIG, multi: true, useFactory: registerFormlyExtension, deps: [TranslateService] },

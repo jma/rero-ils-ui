@@ -16,8 +16,7 @@
  */
 
 import { Component, inject, Input } from '@angular/core';
-import { OperationLogsApiService } from '@app/admin/api/operation-logs-api.service';
-import { ProvisionActivityType } from '@rero/shared';
+import { ProvisionActivityType, OperationLogsApiService } from '@rero/shared';
 
 @Component({
     selector: 'admin-history-log',

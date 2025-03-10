@@ -41,9 +41,6 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { MenubarModule } from 'primeng/menubar';
 import { TableModule } from "primeng/table";
 import { Observable } from 'rxjs';
-import {
-  SelectAccountEditorWidgetComponent
-} from './acquisition/components/editor/widget/select-account-editor-widget/select-account-editor-widget.component';
 import { ReceivedOrderPermissionValidator } from './acquisition/utils/permissions';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -77,7 +74,6 @@ import { PatronTypesBriefViewComponent } from './record/brief-view/patron-types-
 import { PatronsBriefViewComponent } from './record/brief-view/patrons-brief-view/patrons-brief-view.component';
 import { StatisticsCfgBriefViewComponent } from './record/brief-view/statistics-cfg-brief-view-component';
 import { TemplatesBriefViewComponent } from './record/brief-view/templates-brief-view.component';
-import { VendorBriefViewComponent } from './record/brief-view/vendor-brief-view.component';
 import { CirculationLogLoanComponent } from './record/circulation-logs/circulation-log/circulation-log-loan/circulation-log-loan.component';
 import { CirculationLogNotificationComponent } from './record/circulation-logs/circulation-log/circulation-log-notification/circulation-log-notification.component';
 import { CirculationLogComponent } from './record/circulation-logs/circulation-log/circulation-log.component';
@@ -90,7 +86,6 @@ import { ExceptionDatesListComponent } from './record/custom-editor/libraries/ex
 import { LibraryComponent } from './record/custom-editor/libraries/library.component';
 import { NotificationTypePipe } from './record/custom-editor/libraries/pipe/notificationType.pipe';
 import { UserIdEditorComponent } from './record/custom-editor/user-id-editor/user-id-editor.component';
-import { AddressTypeComponent } from './record/detail-view/address-type/address-type.component';
 import { CircPolicyDetailViewComponent } from './record/detail-view/circ-policy-detail-view/circ-policy-detail-view.component';
 import { CollectionDetailViewComponent } from './record/detail-view/collection-detail-view/collection-detail-view.component';
 import { CollectionItemsComponent } from './record/detail-view/collection-detail-view/collection-items/collection-items.component';
@@ -159,7 +154,6 @@ import { ReportDataComponent } from './record/detail-view/statistics-cfg-detail-
 import { ReportsListComponent } from './record/detail-view/statistics-cfg-detail-view/reports-list/reports-list.component';
 import { StatisticsCfgDetailViewComponent } from './record/detail-view/statistics-cfg-detail-view/statistics-cfg-detail-view.component';
 import { TemplateDetailViewComponent } from './record/detail-view/template-detail-view/template-detail-view.component';
-import { VendorDetailViewComponent } from './record/detail-view/vendor-detail-view/vendor-detail-view.component';
 import { AddEntityLocalFormComponent } from './record/editor/formly/primeng/entity-autocomplete/add-entity-local-form/add-entity-local-form.component';
 import { remoteAutocompleteToken } from './record/editor/formly/primeng/remote-autocomplete/remote-autocomplete-factory.service';
 import { DocumentsRemoteService } from './record/editor/formly/primeng/remote-autocomplete/remote/documents-remote.service';
@@ -171,8 +165,6 @@ import { RepeatTypeComponent } from './record/editor/type/repeat-section.type';
 import { IdentifiedbyValueComponent } from './record/editor/wrappers/identifiedby-value.component';
 import { UserIdComponent } from './record/editor/wrappers/user-id.component';
 import { CipoPatronTypeItemTypeComponent } from './record/formly/type/cipo-patron-type-item-type/cipo-patron-type-item-type.component';
-import { OperationLogsDialogComponent } from './record/operation-logs/operation-logs-dialog/operation-logs-dialog.component';
-import { OperationLogsComponent } from './record/operation-logs/operation-logs.component';
 import { DocumentAdvancedSearchFormComponent } from './record/search-view/document-advanced-search-form/document-advanced-search-form.component';
 import { DocumentAdvancedSearchComponent } from './record/search-view/document-advanced-search.component';
 import { DocumentRecordSearchComponent } from './record/search-view/document-record-search/document-record-search.component';
@@ -240,9 +232,6 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
     ItemsBriefViewComponent,
     IssuesBriefViewComponent,
     PatronDetailViewComponent,
-    VendorDetailViewComponent,
-    VendorBriefViewComponent,
-    AddressTypeComponent,
     RelatedResourceComponent,
     ItemRequestComponent,
     ErrorPageComponent,
@@ -267,9 +256,7 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
     LocalFieldComponent,
     MenuDashboardComponent,
     HoldingItemTemporaryItemTypeComponent,
-    OperationLogsComponent,
     HoldingSharedViewComponent,
-    OperationLogsDialogComponent,
     CipoPatronTypeItemTypeComponent,
     UserIdComponent,
     UserIdEditorComponent,
@@ -334,7 +321,7 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
     MenuUserComponent,
     EntityAutocompleteComponent,
     HoldingHeaderComponent,
-    HoldingContentComponent,
+    HoldingContentComponent
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -350,7 +337,6 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
     FormlyModule.forRoot({
       types: [
         { name: "cipo-pt-it", component: CipoPatronTypeItemTypeComponent },
-        { name: "account-select", component: SelectAccountEditorWidgetComponent },
         { name: 'repeat', component: RepeatTypeComponent },
         { name: 'select-formly', component: FormlyFieldSelect },
         { name: 'custom-field', component: FieldCustomInputTypeComponent },
@@ -416,13 +402,12 @@ export function appInitFactory(appInitializerService: AppInitializerService): ()
       useFactory: (translate: TranslateService) => translate.currentLang,
       deps: [TranslateService],
     },
-    MainTitlePipe,
+    // MainTitlePipe,
     TruncateTextPipe,
     CurrentLibraryPermissionValidator,
     ReceivedOrderPermissionValidator,
     // TODO: needed for production build, remove this after it is fixed in the
     // @ngneat/hotkeys library
-    MainTitlePipe,
     ItemHoldingsCallNumberPipe,
     CountryCodeTranslatePipe,
     { provide: CoreBucketNameService, useClass: BucketNameService },

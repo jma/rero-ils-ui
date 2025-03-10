@@ -16,7 +16,7 @@
  */
 import { Component, inject, OnInit } from '@angular/core';
 import { IdentifierTypes } from '@app/admin/classes/identifiers';
-import { OperationLogsService } from '@app/admin/service/operation-logs.service';
+import { OperationLogsService } from '@rero/shared';
 import {
   DetailComponent,
   Record

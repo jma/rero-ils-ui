@@ -19,7 +19,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RecordService } from '@rero/ng-core';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { OperationLogsApiService } from '../../../api/operation-logs-api.service';
+import { OperationLogsApiService } from '@rero/shared';
 import { PatronService } from '../../../service/patron.service';
 
 @Component({

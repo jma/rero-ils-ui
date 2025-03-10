@@ -15,13 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import { Component, inject, Input } from '@angular/core';
-import { IPermissions, PERMISSIONS } from '@rero/shared';
+import { IPermissions, PERMISSIONS } from '../../../util/permissions';
 import { DialogService } from 'primeng/dynamicdialog';
 import { OperationLogsComponent } from '../operation-logs.component';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-    selector: 'admin-operation-logs-dialog',
+    selector: 'shared-operation-logs-dialog',
     templateUrl: './operation-logs-dialog.component.html',
     standalone: false
 })

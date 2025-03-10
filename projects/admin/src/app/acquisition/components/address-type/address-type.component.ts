@@ -15,7 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import { Component, input } from '@angular/core';
-import { AddressType } from '../../../classes/address-type';
+import { AddressType } from '../../classes/address-type';
+
 
 @Component({
     selector: 'admin-address-type',
