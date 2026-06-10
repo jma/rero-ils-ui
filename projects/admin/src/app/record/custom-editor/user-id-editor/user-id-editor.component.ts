@@ -47,6 +47,9 @@ export class UserIdEditorComponent implements OnInit {
 
   searchText = '';
 
+  /** Guard against double-submit. */
+  readonly isSaving = signal(false);
+
   /** current User id in the invenio db */
   userID: string = null;
 
@@ -207,6 +210,7 @@ export class UserIdEditorComponent implements OnInit {
    * Create if the userID is null else update.
    */
   submit(): void {
+    if (this.isSaving()) { return; }
     this.form.markAllAsTouched();
     if (!this.form.valid) {
       this.messageService.add({
@@ -219,19 +223,40 @@ export class UserIdEditorComponent implements OnInit {
       return;
     }
 
+    this.isSaving.set(true);
     const data = removeEmptyValues(this.form.value);
     if (this.loadedUserID != null) {
       this.userID = this.loadedUserID;
     }
     if (this.userID != null) {
       data.pid = this.userID;
-      this.recordService.update('users', data.pid, data).subscribe(() => {
-        this.closeDialog(this.userID);
+      this.recordService.update('users', data.pid, data).subscribe({
+        next: () => this.closeDialog(this.userID),
+        error: (error) => {
+          this.isSaving.set(false);
+          this.messageService.add(
+            (error.status === 409 || error.status === 412)
+              ? {
+                  severity: 'warn',
+                  summary: this.translateService.instant('Record conflict'),
+                  detail: this.translateService.instant('This record has been modified by another user. Please reload the page — your local changes will be lost.'),
+                  sticky: true,
+                  closable: true
+                }
+              : {
+                  severity: 'error',
+                  summary: this.translateService.instant('User'),
+                  detail: error.title,
+                  sticky: true,
+                  closable: true
+                }
+          );
+        }
       });
     } else {
-      this.recordService.create('users', data).subscribe((res) => {
-        this.userID = res.id;
-        this.closeDialog(this.userID);
+      this.recordService.create('users', data).subscribe({
+        next: (res) => { this.userID = res.id; this.closeDialog(this.userID); },
+        error: () => this.isSaving.set(false)
       });
     }
   }
